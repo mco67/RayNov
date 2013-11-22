@@ -6,6 +6,20 @@
 	objectVersion = 46;
 	objects = {
 
+/* Begin PBXAggregateTarget section */
+		744ABB0B183FE7AE009A6366 /* Mogenerator */ = {
+			isa = PBXAggregateTarget;
+			buildConfigurationList = 744ABB0C183FE7AE009A6366 /* Build configuration list for PBXAggregateTarget "Mogenerator" */;
+			buildPhases = (
+				744ABB11183FE7E0009A6366 /* ShellScript */,
+			);
+			dependencies = (
+			);
+			name = Mogenerator;
+			productName = Mogenerator;
+		};
+/* End PBXAggregateTarget section */
+
 /* Begin PBXBuildFile section */
 		744ABABC183FDF32009A6366 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 744ABABB183FDF32009A6366 /* Foundation.framework */; };
 		744ABABE183FDF32009A6366 /* CoreGraphics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 744ABABD183FDF32009A6366 /* CoreGraphics.framework */; };
@@ -21,6 +35,7 @@
 		744ABADD183FDF32009A6366 /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 744ABABF183FDF32009A6366 /* UIKit.framework */; };
 		744ABAE5183FDF32009A6366 /* InfoPlist.strings in Resources */ = {isa = PBXBuildFile; fileRef = 744ABAE3183FDF32009A6366 /* InfoPlist.strings */; };
 		744ABAE7183FDF32009A6366 /* RayNovTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 744ABAE6183FDF32009A6366 /* RayNovTests.m */; };
+		744ABB0A183FE264009A6366 /* ProjectModel.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = 744ABB08183FE264009A6366 /* ProjectModel.xcdatamodeld */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -30,6 +45,13 @@
 			proxyType = 1;
 			remoteGlobalIDString = 744ABAB7183FDF32009A6366;
 			remoteInfo = RayNov;
+		};
+		744ABB0F183FE7C8009A6366 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 744ABAB0183FDF32009A6366 /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = 744ABB0B183FE7AE009A6366;
+			remoteInfo = Mogenerator;
 		};
 /* End PBXContainerItemProxy section */
 
@@ -53,6 +75,7 @@
 		744ABAE2183FDF32009A6366 /* RayNovTests-Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = "RayNovTests-Info.plist"; sourceTree = "<group>"; };
 		744ABAE4183FDF32009A6366 /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/InfoPlist.strings; sourceTree = "<group>"; };
 		744ABAE6183FDF32009A6366 /* RayNovTests.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = RayNovTests.m; sourceTree = "<group>"; };
+		744ABB09183FE264009A6366 /* ProjectModel.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = ProjectModel.xcdatamodel; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -119,6 +142,7 @@
 				744ABAD1183FDF32009A6366 /* RNViewController.m */,
 				744ABAD3183FDF32009A6366 /* Images.xcassets */,
 				744ABAC2183FDF32009A6366 /* Supporting Files */,
+				744ABB08183FE264009A6366 /* ProjectModel.xcdatamodeld */,
 			);
 			path = RayNov;
 			sourceTree = "<group>";
@@ -166,6 +190,7 @@
 			buildRules = (
 			);
 			dependencies = (
+				744ABB10183FE7C8009A6366 /* PBXTargetDependency */,
 			);
 			name = RayNov;
 			productName = RayNov;
@@ -219,6 +244,7 @@
 			projectRoot = "";
 			targets = (
 				744ABAB7183FDF32009A6366 /* RayNov */,
+				744ABB0B183FE7AE009A6366 /* Mogenerator */,
 				744ABAD8183FDF32009A6366 /* RayNovTests */,
 			);
 		};
@@ -245,11 +271,28 @@
 		};
 /* End PBXResourcesBuildPhase section */
 
+/* Begin PBXShellScriptBuildPhase section */
+		744ABB11183FE7E0009A6366 /* ShellScript */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "mogenerator -m RayNov/ProjectModel.xcdatamodeld/ProjectModel.xcdatamodel --machine-dir RayNov/Model/Machine --human-dir RayNov/Model/Human --template-var arc=true";
+		};
+/* End PBXShellScriptBuildPhase section */
+
 /* Begin PBXSourcesBuildPhase section */
 		744ABAB4183FDF32009A6366 /* Sources */ = {
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				744ABB0A183FE264009A6366 /* ProjectModel.xcdatamodeld in Sources */,
 				744ABACC183FDF32009A6366 /* RNAppDelegate.m in Sources */,
 				744ABAC8183FDF32009A6366 /* main.m in Sources */,
 				744ABAD2183FDF32009A6366 /* RNViewController.m in Sources */,
@@ -271,6 +314,11 @@
 			isa = PBXTargetDependency;
 			target = 744ABAB7183FDF32009A6366 /* RayNov */;
 			targetProxy = 744ABADE183FDF32009A6366 /* PBXContainerItemProxy */;
+		};
+		744ABB10183FE7C8009A6366 /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = 744ABB0B183FE7AE009A6366 /* Mogenerator */;
+			targetProxy = 744ABB0F183FE7C8009A6366 /* PBXContainerItemProxy */;
 		};
 /* End PBXTargetDependency section */
 
@@ -444,6 +492,20 @@
 			};
 			name = Release;
 		};
+		744ABB0D183FE7AE009A6366 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				PRODUCT_NAME = "$(TARGET_NAME)";
+			};
+			name = Debug;
+		};
+		744ABB0E183FE7AE009A6366 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				PRODUCT_NAME = "$(TARGET_NAME)";
+			};
+			name = Release;
+		};
 /* End XCBuildConfiguration section */
 
 /* Begin XCConfigurationList section */
@@ -472,7 +534,28 @@
 			);
 			defaultConfigurationIsVisible = 0;
 		};
+		744ABB0C183FE7AE009A6366 /* Build configuration list for PBXAggregateTarget "Mogenerator" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				744ABB0D183FE7AE009A6366 /* Debug */,
+				744ABB0E183FE7AE009A6366 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+		};
 /* End XCConfigurationList section */
+
+/* Begin XCVersionGroup section */
+		744ABB08183FE264009A6366 /* ProjectModel.xcdatamodeld */ = {
+			isa = XCVersionGroup;
+			children = (
+				744ABB09183FE264009A6366 /* ProjectModel.xcdatamodel */,
+			);
+			currentVersion = 744ABB09183FE264009A6366 /* ProjectModel.xcdatamodel */;
+			path = ProjectModel.xcdatamodeld;
+			sourceTree = "<group>";
+			versionGroupType = wrapper.xcdatamodel;
+		};
+/* End XCVersionGroup section */
 	};
 	rootObject = 744ABAB0183FDF32009A6366 /* Project object */;
 }

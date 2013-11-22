@@ -1,0 +1,48 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<model userDefinedModelVersionIdentifier="" type="com.apple.IDECoreDataModeler.DataModel" documentVersion="1.0" lastSavedToolsVersion="3401" systemVersion="13A603" minimumToolsVersion="Xcode 4.3" macOSVersion="Automatic" iOSVersion="Automatic">
+    <entity name="RNCeiling" representedClassName="RNCeiling" parentEntity="RNSurface" syncable="YES">
+        <relationship name="room" optional="YES" maxCount="1" deletionRule="Nullify" destinationEntity="RNRoom" inverseName="ceiling" inverseEntity="RNRoom" syncable="YES"/>
+    </entity>
+    <entity name="RNDoor" representedClassName="RNDoor" parentEntity="RNSurface" syncable="YES">
+        <relationship name="wall" optional="YES" maxCount="1" deletionRule="Nullify" destinationEntity="RNWall" inverseName="doors" inverseEntity="RNWall" syncable="YES"/>
+    </entity>
+    <entity name="RNGround" representedClassName="RNGround" parentEntity="RNSurface" syncable="YES">
+        <relationship name="room" optional="YES" maxCount="1" deletionRule="Nullify" destinationEntity="RNRoom" inverseName="ground" inverseEntity="RNRoom" syncable="YES"/>
+    </entity>
+    <entity name="RNProject" representedClassName="RNProject" syncable="YES">
+        <relationship name="rooms" optional="YES" toMany="YES" deletionRule="Nullify" destinationEntity="RNRoom" inverseName="project" inverseEntity="RNRoom" syncable="YES"/>
+    </entity>
+    <entity name="RNRadiator" representedClassName="RNRadiator" parentEntity="RNSurface" syncable="YES">
+        <relationship name="wall" optional="YES" maxCount="1" deletionRule="Nullify" destinationEntity="RNWall" inverseName="radiators" inverseEntity="RNWall" syncable="YES"/>
+    </entity>
+    <entity name="RNRoom" representedClassName="RNRoom" syncable="YES">
+        <relationship name="ceiling" optional="YES" maxCount="1" deletionRule="Nullify" destinationEntity="RNCeiling" inverseName="room" inverseEntity="RNCeiling" syncable="YES"/>
+        <relationship name="ground" optional="YES" maxCount="1" deletionRule="Nullify" destinationEntity="RNGround" inverseName="room" inverseEntity="RNGround" syncable="YES"/>
+        <relationship name="project" optional="YES" maxCount="1" deletionRule="Nullify" destinationEntity="RNProject" inverseName="rooms" inverseEntity="RNProject" syncable="YES"/>
+        <relationship name="walls" optional="YES" toMany="YES" deletionRule="Nullify" destinationEntity="RNWall" inverseName="room" inverseEntity="RNWall" syncable="YES"/>
+    </entity>
+    <entity name="RNSurface" representedClassName="RNSurface" syncable="YES">
+        <attribute name="height" optional="YES" attributeType="Double" defaultValueString="0.0" syncable="YES"/>
+        <attribute name="width" optional="YES" attributeType="Double" minValueString="0" defaultValueString="0.0" syncable="YES"/>
+    </entity>
+    <entity name="RNWall" representedClassName="RNWall" parentEntity="RNSurface" syncable="YES">
+        <relationship name="doors" optional="YES" toMany="YES" deletionRule="Nullify" destinationEntity="RNDoor" inverseName="wall" inverseEntity="RNDoor" syncable="YES"/>
+        <relationship name="radiators" optional="YES" toMany="YES" deletionRule="Nullify" destinationEntity="RNRadiator" inverseName="wall" inverseEntity="RNRadiator" syncable="YES"/>
+        <relationship name="room" optional="YES" maxCount="1" deletionRule="Nullify" destinationEntity="RNRoom" inverseName="walls" inverseEntity="RNRoom" syncable="YES"/>
+        <relationship name="windows" optional="YES" toMany="YES" deletionRule="Nullify" destinationEntity="RNWindow" inverseName="wall" inverseEntity="RNWindow" syncable="YES"/>
+    </entity>
+    <entity name="RNWindow" representedClassName="RNWindow" parentEntity="RNSurface" syncable="YES">
+        <relationship name="wall" optional="YES" maxCount="1" deletionRule="Nullify" destinationEntity="RNWall" inverseName="windows" inverseEntity="RNWall" syncable="YES"/>
+    </entity>
+    <elements>
+        <element name="RNRoom" positionX="-4349" positionY="-4837" width="128" height="103"/>
+        <element name="RNWall" positionX="-4347" positionY="-4666" width="128" height="103"/>
+        <element name="RNWindow" positionX="-4149" positionY="-4486" width="128" height="58"/>
+        <element name="RNRadiator" positionX="-4554" positionY="-4486" width="128" height="58"/>
+        <element name="RNDoor" positionX="-4356" positionY="-4491" width="128" height="58"/>
+        <element name="RNGround" positionX="-4151" positionY="-4666" width="128" height="58"/>
+        <element name="RNCeiling" positionX="-4583" positionY="-4666" width="128" height="58"/>
+        <element name="RNProject" positionX="-4347" positionY="-4959" width="128" height="58"/>
+        <element name="RNSurface" positionX="-4356" positionY="-4347" width="128" height="73"/>
+    </elements>
+</model>
