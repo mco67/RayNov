@@ -10,4 +10,6 @@
 
 @interface RNViewController : UIViewController
 
+@property (nonatomic, strong) NSManagedObjectContext* managedObjectContext;
+
 @end

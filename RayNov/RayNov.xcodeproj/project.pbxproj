@@ -21,6 +21,7 @@
 /* End PBXAggregateTarget section */
 
 /* Begin PBXBuildFile section */
+		741F019D183FF9AF00FF9FE8 /* CoreData.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 741F019C183FF9AF00FF9FE8 /* CoreData.framework */; };
 		744ABABC183FDF32009A6366 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 744ABABB183FDF32009A6366 /* Foundation.framework */; };
 		744ABABE183FDF32009A6366 /* CoreGraphics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 744ABABD183FDF32009A6366 /* CoreGraphics.framework */; };
 		744ABAC0183FDF32009A6366 /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 744ABABF183FDF32009A6366 /* UIKit.framework */; };
@@ -56,6 +57,7 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		741F019C183FF9AF00FF9FE8 /* CoreData.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreData.framework; path = System/Library/Frameworks/CoreData.framework; sourceTree = SDKROOT; };
 		744ABAB8183FDF32009A6366 /* RayNov.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = RayNov.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		744ABABB183FDF32009A6366 /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = System/Library/Frameworks/Foundation.framework; sourceTree = SDKROOT; };
 		744ABABD183FDF32009A6366 /* CoreGraphics.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreGraphics.framework; path = System/Library/Frameworks/CoreGraphics.framework; sourceTree = SDKROOT; };
@@ -83,6 +85,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				741F019D183FF9AF00FF9FE8 /* CoreData.framework in Frameworks */,
 				744ABABE183FDF32009A6366 /* CoreGraphics.framework in Frameworks */,
 				744ABAC0183FDF32009A6366 /* UIKit.framework in Frameworks */,
 				744ABABC183FDF32009A6366 /* Foundation.framework in Frameworks */,
@@ -124,6 +127,7 @@
 		744ABABA183FDF32009A6366 /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
+				741F019C183FF9AF00FF9FE8 /* CoreData.framework */,
 				744ABABB183FDF32009A6366 /* Foundation.framework */,
 				744ABABD183FDF32009A6366 /* CoreGraphics.framework */,
 				744ABABF183FDF32009A6366 /* UIKit.framework */,
@@ -137,9 +141,9 @@
 			children = (
 				744ABACA183FDF32009A6366 /* RNAppDelegate.h */,
 				744ABACB183FDF32009A6366 /* RNAppDelegate.m */,
-				744ABACD183FDF32009A6366 /* Main.storyboard */,
 				744ABAD0183FDF32009A6366 /* RNViewController.h */,
 				744ABAD1183FDF32009A6366 /* RNViewController.m */,
+				744ABACD183FDF32009A6366 /* Main.storyboard */,
 				744ABAD3183FDF32009A6366 /* Images.xcassets */,
 				744ABAC2183FDF32009A6366 /* Supporting Files */,
 				744ABB08183FE264009A6366 /* ProjectModel.xcdatamodeld */,
@@ -525,6 +529,7 @@
 				744ABAEC183FDF32009A6366 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 		744ABAED183FDF32009A6366 /* Build configuration list for PBXNativeTarget "RayNovTests" */ = {
 			isa = XCConfigurationList;
@@ -533,6 +538,7 @@
 				744ABAEF183FDF32009A6366 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 		744ABB0C183FE7AE009A6366 /* Build configuration list for PBXAggregateTarget "Mogenerator" */ = {
 			isa = XCConfigurationList;
@@ -541,6 +547,7 @@
 				744ABB0E183FE7AE009A6366 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
 
