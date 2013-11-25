@@ -19,10 +19,10 @@
 - (BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions
 {
     // Override point for customization after application launch.
-    RNViewController* mainViewController = (RNViewController *)self.window.rootViewController;
+    UINavigationController* mainNavigationController = (UINavigationController*)self.window.rootViewController;
+    RNViewController* mainViewController = (RNViewController *)mainNavigationController.topViewController;
     mainViewController.managedObjectContext = self.managedObjectContext;
     return YES;
-
 }
 							
 - (void)applicationWillResignActive:(UIApplication *)application
