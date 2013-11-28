@@ -1,13 +1,13 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="4514" systemVersion="13A603" targetRuntime="iOS.CocoaTouch.iPad" propertyAccessControl="none" useAutolayout="YES" initialViewController="4Ym-kh-b4N">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="4514" systemVersion="13A603" targetRuntime="iOS.CocoaTouch.iPad" propertyAccessControl="none" useAutolayout="YES" initialViewController="wcw-wn-7In">
     <dependencies>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="3747"/>
     </dependencies>
     <scenes>
-        <!--View Controller - Project-->
+        <!--Projects View Controller-->
         <scene sceneID="luH-AR-G7l">
             <objects>
-                <collectionViewController autoresizesArchivedViewToFullSize="NO" id="QNf-ZU-tOu" customClass="RNViewController" sceneMemberID="viewController">
+                <collectionViewController autoresizesArchivedViewToFullSize="NO" id="QNf-ZU-tOu" customClass="RNProjectsViewController" sceneMemberID="viewController">
                     <collectionView key="view" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" minimumZoomScale="0.0" maximumZoomScale="0.0" dataMode="prototypes" id="qaY-sH-ItZ">
                         <rect key="frame" x="0.0" y="0.0" width="768" height="1024"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -19,7 +19,7 @@
                             <inset key="sectionInset" minX="0.0" minY="0.0" maxX="0.0" maxY="0.0"/>
                         </collectionViewFlowLayout>
                         <cells>
-                            <collectionViewCell opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" id="9ZI-Hh-1qi">
+                            <collectionViewCell opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" reuseIdentifier="ProjectCell" id="9ZI-Hh-1qi">
                                 <rect key="frame" x="0.0" y="64" width="50" height="50"/>
                                 <autoresizingMask key="autoresizingMask"/>
                                 <view key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center">
@@ -34,7 +34,18 @@
                             <outlet property="delegate" destination="QNf-ZU-tOu" id="fGO-tm-wsA"/>
                         </connections>
                     </collectionView>
-                    <navigationItem key="navigationItem" title="Project" id="tmp-iv-dEh">
+                    <navigationItem key="navigationItem" id="tmp-iv-dEh">
+                        <nil key="title"/>
+                        <barButtonItem key="leftBarButtonItem" image="reveal-icon" id="vuK-tL-EjF"/>
+                        <segmentedControl key="titleView" opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="top" segmentControlStyle="bar" selectedSegmentIndex="0" id="B2J-QI-ZhD">
+                            <rect key="frame" x="231" y="7" width="307" height="30"/>
+                            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                            <segments>
+                                <segment title="Tous"/>
+                                <segment title="Actifs"/>
+                                <segment title="Clos"/>
+                            </segments>
+                        </segmentedControl>
                         <barButtonItem key="rightBarButtonItem" systemItem="add" id="C7A-Qu-Ffb">
                             <connections>
                                 <action selector="onAddProjectButtonTap:" destination="QNf-ZU-tOu" id="xSV-da-ERY"/>
@@ -42,10 +53,45 @@
                             </connections>
                         </barButtonItem>
                     </navigationItem>
+                    <connections>
+                        <outlet property="revealButtonItem" destination="vuK-tL-EjF" id="DA7-mx-JAE"/>
+                        <segue destination="bTH-Oq-gRI" kind="modal" identifier="EditProject" modalPresentationStyle="fullScreen" modalTransitionStyle="coverVertical" id="vSN-CP-zHv"/>
+                    </connections>
                 </collectionViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="joK-fG-pdU" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="-1805" y="-5024"/>
+            <point key="canvasLocation" x="-1797" y="-5299"/>
+        </scene>
+        <!--Reveal View Controller-->
+        <scene sceneID="3CM-cA-ZO2">
+            <objects>
+                <viewController id="wcw-wn-7In" customClass="SWRevealViewController" sceneMemberID="viewController">
+                    <connections>
+                        <segue destination="teU-6E-Pfa" kind="custom" identifier="sw_rear" customClass="SWRevealViewControllerSegue" id="NRe-Er-Aku"/>
+                        <segue destination="4Ym-kh-b4N" kind="custom" identifier="sw_front" customClass="SWRevealViewControllerSegue" id="EsW-iV-LOs"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="juF-HN-cxl" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="-3992" y="-6450"/>
+        </scene>
+        <!--View Controller-->
+        <scene sceneID="wO5-7U-ciw">
+            <objects>
+                <viewController id="teU-6E-Pfa" sceneMemberID="viewController">
+                    <layoutGuides>
+                        <viewControllerLayoutGuide type="top" id="Dx2-MN-Bqd"/>
+                        <viewControllerLayoutGuide type="bottom" id="cPM-af-gea"/>
+                    </layoutGuides>
+                    <view key="view" contentMode="scaleToFill" id="0pb-Zc-KGE">
+                        <rect key="frame" x="0.0" y="0.0" width="768" height="1024"/>
+                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
+                    </view>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="8sP-xn-APi" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="-2884" y="-6604"/>
         </scene>
         <!--Create Project View Controller - CreateProjectViewController-->
         <scene sceneID="hMZ-Dl-bko">
@@ -68,9 +114,19 @@
                                                 <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="DS8-x1-0Ua">
                                                     <rect key="frame" x="15" y="2" width="738" height="39"/>
                                                     <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                                    <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                                    <fontDescription key="fontDescription" name="HelveticaNeue" family="Helvetica Neue" pointSize="17"/>
                                                     <textInputTraits key="textInputTraits"/>
+                                                    <connections>
+                                                        <outlet property="delegate" destination="VSl-SB-2Gv" id="pNO-t9-GET"/>
+                                                    </connections>
                                                 </textField>
+                                                <label hidden="YES" opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Un projet avec ce nom existe déjà!" textAlignment="right" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="4UZ-8g-pyP">
+                                                    <rect key="frame" x="494" y="10" width="259" height="21"/>
+                                                    <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                                    <fontDescription key="fontDescription" name="HelveticaNeue-Light" family="Helvetica Neue" pointSize="17"/>
+                                                    <color key="textColor" red="1" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
+                                                    <nil key="highlightedColor"/>
+                                                </label>
                                             </subviews>
                                             <constraints>
                                                 <constraint firstItem="DS8-x1-0Ua" firstAttribute="leading" secondItem="oi0-oj-UYI" secondAttribute="leading" constant="15" id="KC1-7J-HgH"/>
@@ -91,18 +147,18 @@
                                             <rect key="frame" x="0.0" y="0.0" width="768" height="43"/>
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
-                                                <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" misplaced="YES" contentHorizontalAlignment="left" contentVerticalAlignment="center" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="HHm-tz-Uzk">
-                                                    <rect key="frame" x="10" y="7" width="748" height="30"/>
+                                                <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" misplaced="YES" contentHorizontalAlignment="left" contentVerticalAlignment="center" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="Kfv-v0-eyF">
+                                                    <rect key="frame" x="15" y="7" width="738" height="30"/>
                                                     <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                                    <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                                    <fontDescription key="fontDescription" name="HelveticaNeue" family="Helvetica Neue" pointSize="17"/>
                                                     <textInputTraits key="textInputTraits"/>
                                                 </textField>
                                             </subviews>
                                             <constraints>
-                                                <constraint firstAttribute="bottom" secondItem="HHm-tz-Uzk" secondAttribute="bottom" constant="2" id="7MV-Hn-kBL"/>
-                                                <constraint firstAttribute="trailing" secondItem="HHm-tz-Uzk" secondAttribute="trailing" constant="10" id="AyR-TM-W3a"/>
-                                                <constraint firstItem="HHm-tz-Uzk" firstAttribute="leading" secondItem="w6x-n1-QvT" secondAttribute="leading" constant="10" id="KDc-cA-vk6"/>
-                                                <constraint firstItem="HHm-tz-Uzk" firstAttribute="top" secondItem="w6x-n1-QvT" secondAttribute="top" constant="2" id="xt3-Gc-Pc8"/>
+                                                <constraint firstAttribute="bottom" secondItem="Kfv-v0-eyF" secondAttribute="bottom" constant="2" id="K4g-5A-ahG"/>
+                                                <constraint firstAttribute="trailing" secondItem="Kfv-v0-eyF" secondAttribute="trailing" constant="15" id="PiG-sJ-AJz"/>
+                                                <constraint firstItem="Kfv-v0-eyF" firstAttribute="top" secondItem="w6x-n1-QvT" secondAttribute="top" constant="2" id="Qs2-5m-oqK"/>
+                                                <constraint firstItem="Kfv-v0-eyF" firstAttribute="leading" secondItem="w6x-n1-QvT" secondAttribute="leading" constant="15" id="zGm-Aw-at9" userLabel="Horizontal Space - (16) - No Border Style Text Field - Content View"/>
                                             </constraints>
                                         </tableViewCellContentView>
                                     </tableViewCell>
@@ -111,7 +167,7 @@
                         </sections>
                     </tableView>
                     <toolbarItems/>
-                    <navigationItem key="navigationItem" title="Root View Controller" id="EQ2-Zs-0py">
+                    <navigationItem key="navigationItem" title="Create a project" id="EQ2-Zs-0py">
                         <barButtonItem key="leftBarButtonItem" systemItem="cancel" id="gIX-QZ-6gu">
                             <connections>
                                 <action selector="cancel:" destination="VSl-SB-2Gv" id="7I2-02-gQd"/>
@@ -124,10 +180,56 @@
                         </barButtonItem>
                     </navigationItem>
                     <simulatedToolbarMetrics key="simulatedBottomBarMetrics"/>
+                    <connections>
+                        <outlet property="applyButton" destination="QL0-0K-Ng5" id="pSE-rd-phq"/>
+                        <outlet property="clientName" destination="Kfv-v0-eyF" id="Cct-Yp-ad1"/>
+                        <outlet property="projectName" destination="DS8-x1-0Ua" id="nwX-Dj-DCH"/>
+                        <outlet property="projectNameErrorLabel" destination="4UZ-8g-pyP" id="5Ng-k8-V03"/>
+                    </connections>
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="crQ-6z-aPz" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="436" y="-4647"/>
+            <point key="canvasLocation" x="484" y="-5040"/>
+        </scene>
+        <!--Navigation Controller-->
+        <scene sceneID="mH3-Gc-kDL">
+            <objects>
+                <navigationController storyboardIdentifier="aaa" definesPresentationContext="YES" id="bTH-Oq-gRI" sceneMemberID="viewController">
+                    <navigationBar key="navigationBar" contentMode="scaleToFill" id="6bj-oZ-X5a">
+                        <autoresizingMask key="autoresizingMask"/>
+                    </navigationBar>
+                    <connections>
+                        <segue destination="8Q4-iq-cko" kind="relationship" relationship="rootViewController" id="3rz-nS-ziq"/>
+                    </connections>
+                </navigationController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="M9Y-rc-dJa" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="-828" y="-3639"/>
+        </scene>
+        <!--Edit Project View Controller-->
+        <scene sceneID="xcr-oN-URH">
+            <objects>
+                <viewController id="8Q4-iq-cko" customClass="RNEditProjectViewController" sceneMemberID="viewController">
+                    <layoutGuides>
+                        <viewControllerLayoutGuide type="top" id="gc8-Ea-Zhr"/>
+                        <viewControllerLayoutGuide type="bottom" id="kkC-TI-20j"/>
+                    </layoutGuides>
+                    <view key="view" contentMode="scaleToFill" id="xRR-9n-7cH">
+                        <rect key="frame" x="0.0" y="0.0" width="768" height="1024"/>
+                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
+                    </view>
+                    <navigationItem key="navigationItem" id="50l-3M-X96">
+                        <barButtonItem key="leftBarButtonItem" style="plain" systemItem="cancel" id="8t5-4o-RYI">
+                            <connections>
+                                <action selector="cancel:" destination="8Q4-iq-cko" id="Pvh-09-HTL"/>
+                            </connections>
+                        </barButtonItem>
+                    </navigationItem>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="xZf-Ek-nWX" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="228" y="-3591"/>
         </scene>
         <!--Navigation Controller - CreateProjectNavigationController-->
         <scene sceneID="5Xc-A0-3fH">
@@ -142,7 +244,7 @@
                 </navigationController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="ShR-wz-x8C" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="-620" y="-4639"/>
+            <point key="canvasLocation" x="-588" y="-5040"/>
         </scene>
         <!--Navigation Controller - projectsViewController-->
         <scene sceneID="zgw-2A-K92">
@@ -160,9 +262,12 @@
                 </navigationController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="PRo-9z-3b3" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="-2823" y="-5040"/>
+            <point key="canvasLocation" x="-2858" y="-5299"/>
         </scene>
     </scenes>
+    <resources>
+        <image name="reveal-icon" width="22" height="17"/>
+    </resources>
     <simulatedMetricsContainer key="defaultSimulatedMetrics">
         <simulatedStatusBarMetrics key="statusBar" statusBarStyle="blackOpaque"/>
         <simulatedOrientationMetrics key="orientation"/>

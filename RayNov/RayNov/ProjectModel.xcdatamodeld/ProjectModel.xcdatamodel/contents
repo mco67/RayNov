@@ -10,6 +10,9 @@
         <relationship name="room" optional="YES" maxCount="1" deletionRule="Nullify" destinationEntity="RNRoom" inverseName="ground" inverseEntity="RNRoom" syncable="YES"/>
     </entity>
     <entity name="RNProject" representedClassName="RNProject" syncable="YES">
+        <attribute name="clientName" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="creationDate" optional="YES" attributeType="Date" syncable="YES"/>
+        <attribute name="name" optional="YES" attributeType="String" syncable="YES"/>
         <relationship name="rooms" optional="YES" toMany="YES" deletionRule="Nullify" destinationEntity="RNRoom" inverseName="project" inverseEntity="RNRoom" syncable="YES"/>
     </entity>
     <entity name="RNRadiator" representedClassName="RNRadiator" parentEntity="RNSurface" syncable="YES">
@@ -35,14 +38,14 @@
         <relationship name="wall" optional="YES" maxCount="1" deletionRule="Nullify" destinationEntity="RNWall" inverseName="windows" inverseEntity="RNWall" syncable="YES"/>
     </entity>
     <elements>
-        <element name="RNRoom" positionX="-4349" positionY="-4837" width="128" height="103"/>
-        <element name="RNWall" positionX="-4347" positionY="-4666" width="128" height="103"/>
-        <element name="RNWindow" positionX="-4149" positionY="-4486" width="128" height="58"/>
-        <element name="RNRadiator" positionX="-4554" positionY="-4486" width="128" height="58"/>
+        <element name="RNCeiling" positionX="-4583" positionY="-4666" width="128" height="58"/>
         <element name="RNDoor" positionX="-4356" positionY="-4491" width="128" height="58"/>
         <element name="RNGround" positionX="-4151" positionY="-4666" width="128" height="58"/>
-        <element name="RNCeiling" positionX="-4583" positionY="-4666" width="128" height="58"/>
-        <element name="RNProject" positionX="-4347" positionY="-4959" width="128" height="58"/>
+        <element name="RNProject" positionX="-4374" positionY="-5044" width="128" height="103"/>
+        <element name="RNRadiator" positionX="-4554" positionY="-4486" width="128" height="58"/>
+        <element name="RNRoom" positionX="-4349" positionY="-4837" width="128" height="103"/>
         <element name="RNSurface" positionX="-4356" positionY="-4347" width="128" height="73"/>
+        <element name="RNWall" positionX="-4347" positionY="-4666" width="128" height="103"/>
+        <element name="RNWindow" positionX="-4149" positionY="-4486" width="128" height="58"/>
     </elements>
 </model>

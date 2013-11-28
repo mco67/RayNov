@@ -4,6 +4,9 @@
 #import "_RNProject.h"
 
 const struct RNProjectAttributes RNProjectAttributes = {
+	.clientName = @"clientName",
+	.creationDate = @"creationDate",
+	.name = @"name",
 };
 
 const struct RNProjectRelationships RNProjectRelationships = {
@@ -42,6 +45,27 @@ const struct RNProjectFetchedProperties RNProjectFetchedProperties = {
 
 	return keyPaths;
 }
+
+
+
+
+@dynamic clientName;
+
+
+
+
+
+
+@dynamic creationDate;
+
+
+
+
+
+
+@dynamic name;
+
+
 
 
 

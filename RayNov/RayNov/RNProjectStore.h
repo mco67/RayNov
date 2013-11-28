@@ -7,7 +7,14 @@
 //
 
 #import <Foundation/Foundation.h>
+#import "RNProject.h"
 
 @interface RNProjectStore : NSObject
+
++ (RNProjectStore*) instance;
+
+- (RNProject*) createProjectWithName:(NSString*)projectName andError:(NSError**)error;
+- (NSFetchedResultsController*) createFetchedResultControllerWithDelegate:(id<NSFetchedResultsControllerDelegate>)delegate;
+- (void) saveContext;
 
 @end

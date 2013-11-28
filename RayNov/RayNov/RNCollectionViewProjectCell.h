@@ -10,4 +10,6 @@
 
 @interface RNCollectionViewProjectCell : UICollectionViewCell
 
+@property (strong, nonatomic) NSString* projectName;
+
 @end

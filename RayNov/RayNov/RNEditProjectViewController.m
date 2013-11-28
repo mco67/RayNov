@@ -35,4 +35,12 @@
     // Dispose of any resources that can be recreated.
 }
 
+#pragma mark - Handle user actions
+
+- (IBAction) cancel:(id)sender
+{
+    [self.delegate editProjectViewControllerDidCancel:self];
+}
+
+
 @end

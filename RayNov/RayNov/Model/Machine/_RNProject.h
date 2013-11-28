@@ -5,6 +5,9 @@
 
 
 extern const struct RNProjectAttributes {
+	__unsafe_unretained NSString *clientName;
+	__unsafe_unretained NSString *creationDate;
+	__unsafe_unretained NSString *name;
 } RNProjectAttributes;
 
 extern const struct RNProjectRelationships {
@@ -17,6 +20,9 @@ extern const struct RNProjectFetchedProperties {
 @class RNRoom;
 
 
+
+
+
 @interface RNProjectID : NSManagedObjectID {}
 @end
 
@@ -25,6 +31,36 @@ extern const struct RNProjectFetchedProperties {
 + (NSString*)entityName;
 + (NSEntityDescription*)entityInManagedObjectContext:(NSManagedObjectContext*)moc_;
 - (RNProjectID*)objectID;
+
+
+
+
+
+@property (nonatomic, strong) NSString* clientName;
+
+
+
+//- (BOOL)validateClientName:(id*)value_ error:(NSError**)error_;
+
+
+
+
+
+@property (nonatomic, strong) NSDate* creationDate;
+
+
+
+//- (BOOL)validateCreationDate:(id*)value_ error:(NSError**)error_;
+
+
+
+
+
+@property (nonatomic, strong) NSString* name;
+
+
+
+//- (BOOL)validateName:(id*)value_ error:(NSError**)error_;
 
 
 
@@ -50,6 +86,24 @@ extern const struct RNProjectFetchedProperties {
 @end
 
 @interface _RNProject (CoreDataGeneratedPrimitiveAccessors)
+
+
+- (NSString*)primitiveClientName;
+- (void)setPrimitiveClientName:(NSString*)value;
+
+
+
+
+- (NSDate*)primitiveCreationDate;
+- (void)setPrimitiveCreationDate:(NSDate*)value;
+
+
+
+
+- (NSString*)primitiveName;
+- (void)setPrimitiveName:(NSString*)value;
+
+
 
 
 

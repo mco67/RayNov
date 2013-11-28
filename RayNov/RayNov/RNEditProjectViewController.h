@@ -8,6 +8,17 @@
 
 #import <UIKit/UIKit.h>
 
+@class RNEditProjectViewController;
+
+@protocol RNEditProjectViewControllerDelegate <NSObject>
+
+- (void) editProjectViewControllerDidCancel:(RNEditProjectViewController*)controller;
+
+@end
+
+
 @interface RNEditProjectViewController : UIViewController
 
+@property (weak, nonatomic) id<RNEditProjectViewControllerDelegate> delegate;
+ 
 @end

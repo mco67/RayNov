@@ -8,8 +8,6 @@
 
 #import <UIKit/UIKit.h>
 
-@interface RNViewController : UICollectionViewController
-
-@property (nonatomic, strong) NSManagedObjectContext* managedObjectContext;
+@interface RNProjectsViewController : UICollectionViewController
 
 @end
