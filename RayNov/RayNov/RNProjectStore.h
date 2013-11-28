@@ -14,6 +14,8 @@
 + (RNProjectStore*) instance;
 
 - (RNProject*) createProjectWithName:(NSString*)projectName andError:(NSError**)error;
+- (void) deleteProject:(RNProject*)project;
+
 - (NSFetchedResultsController*) createFetchedResultControllerWithDelegate:(id<NSFetchedResultsControllerDelegate>)delegate;
 - (void) saveContext;
 

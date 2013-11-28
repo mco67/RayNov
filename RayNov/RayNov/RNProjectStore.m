@@ -70,6 +70,11 @@
     return project;
 }
 
+- (void) deleteProject:(RNProject*)project
+{
+    [self.managedObjectContext deleteObject:project];
+}
+
 - (void) saveContext
 {
     NSError *error = nil;

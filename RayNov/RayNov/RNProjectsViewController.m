@@ -11,15 +11,17 @@
 #import "RNEditProjectViewController.h"
 #import "RNProjectStore.h"
 #import "RNProject.h"
+#import "RNProjectsLayout.h"
 #import "RNCollectionViewProjectCell.h"
 #import <SWRevealViewController/SWRevealViewController.h>
 
-@interface RNProjectsViewController () <RNCreateProjectViewControllerDelegate, RNEditProjectViewControllerDelegate, UICollectionViewDataSource, UICollectionViewDelegateFlowLayout, NSFetchedResultsControllerDelegate>
+@interface RNProjectsViewController () <RNCreateProjectViewControllerDelegate, RNEditProjectViewControllerDelegate, UICollectionViewDataSource, UICollectionViewDelegateFlowLayout, NSFetchedResultsControllerDelegate, RNProjectsLayoutDelegate, UIGestureRecognizerDelegate>
 
 @property (strong, nonatomic) NSFetchedResultsController* fetchedResultsController;
 @property (strong, nonatomic) NSMutableArray* objectChanges;
 @property (strong, nonatomic) NSMutableArray* sectionChanges;
 @property (weak, nonatomic) IBOutlet UIBarButtonItem* revealButtonItem;
+@property (nonatomic) BOOL isDeletionModeActive;
 
 @end
 
@@ -33,17 +35,18 @@
 {
     [super viewDidLoad];
     
-    
+    // Initialize local variables
+    self.isDeletionModeActive = NO;
     self.objectChanges = [NSMutableArray array];
     self.sectionChanges = [NSMutableArray array];
     
+    // Configure the collectionView
+    self.collectionView.collectionViewLayout = [[RNProjectsLayout alloc] init];
     [self.collectionView registerClass:[RNCollectionViewProjectCell class] forCellWithReuseIdentifier:@"ProjectCell"];
     
-    // Create the fetchedResultController
-    self.fetchedResultsController = [[RNProjectStore instance] createFetchedResultControllerWithDelegate:self];
-    
-    // Initialize it
+    // Create and iniialize the fetchedResultController
     NSError *error;
+    self.fetchedResultsController = [[RNProjectStore instance] createFetchedResultControllerWithDelegate:self];
 	if (![[self fetchedResultsController] performFetch:&error]) {
 		NSLog(@"Unresolved error %@, %@", error, [error userInfo]);
 		exit(-1);  // Fail
@@ -52,6 +55,13 @@
     [self.revealButtonItem setTarget: self.revealViewController];
     [self.revealButtonItem setAction: @selector( revealToggle: )];
     [self.navigationController.navigationBar addGestureRecognizer: self.revealViewController.panGestureRecognizer];
+    
+    UILongPressGestureRecognizer* longPress = [[UILongPressGestureRecognizer alloc] initWithTarget:self action:@selector(activateDeletionMode:)];
+    longPress.delegate = self;
+    [self.collectionView addGestureRecognizer:longPress];
+    UITapGestureRecognizer* tap = [[UITapGestureRecognizer alloc] initWithTarget:self action:@selector(endDeletionMode:)];
+    tap.delegate = self;
+    [self.collectionView addGestureRecognizer:tap];
 }
 
 - (void) didReceiveMemoryWarning
@@ -113,13 +123,19 @@
 {
     RNCollectionViewProjectCell* cell = (RNCollectionViewProjectCell*)[collectionView dequeueReusableCellWithReuseIdentifier:@"ProjectCell" forIndexPath:indexPath];
     RNProject* project = [self.fetchedResultsController objectAtIndexPath:indexPath];
-    
+    [cell.deleteButton addTarget:self action:@selector(delete:) forControlEvents:UIControlEventTouchUpInside];
+
     cell.projectName = project.name;
     
     return cell;
 }
 
-
+- (void) delete:(UIButton*)sender
+{
+    NSIndexPath* indexPath = [self.collectionView indexPathForCell:(RNCollectionViewProjectCell*)sender.superview.superview];
+    RNProject* project = [self.fetchedResultsController objectAtIndexPath:indexPath];
+    [[RNProjectStore instance] deleteProject:project];
+}
 
 
 #pragma mark - UICollectionViewDelegate implementation
@@ -134,20 +150,11 @@
 {
 }
 
-
-
-- (CGSize)collectionView:(UICollectionView*)collectionView layout:(UICollectionViewLayout*)collectionViewLayout sizeForItemAtIndexPath:(NSIndexPath*)indexPath
+- (BOOL)collectionView:(UICollectionView*)collectionView shouldSelectItemAtIndexPath:(NSIndexPath*)indexPath
 {
-    CGSize retval = CGSizeMake(100, 100);
-    retval.height += 35; retval.width += 35;
-    return retval;
+    return !self.isDeletionModeActive;
 }
 
-
-- (UIEdgeInsets)collectionView:(UICollectionView*)collectionView layout:(UICollectionViewLayout*)collectionViewLayout insetForSectionAtIndex:(NSInteger)section
-{
-    return UIEdgeInsetsMake(50, 20, 50, 20);
-}
 
 
 #pragma mark - NSFetchedResultsControllerDelegate implementation
@@ -274,4 +281,51 @@
     return shouldReload;
 }
 
+
+- (BOOL) isDeletionModeActiveForCollectionView:(UICollectionView *)collectionView layout:(UICollectionViewLayout*)collectionViewLayout
+{
+    return self.isDeletionModeActive;
+}
+
+
+#pragma mark - gesture-recognition action methods
+
+- (BOOL) gestureRecognizer:(UIGestureRecognizer *)gestureRecognizer shouldReceiveTouch:(UITouch*)touch
+{
+    CGPoint touchPoint = [touch locationInView:self.collectionView];
+    NSIndexPath *indexPath = [self.collectionView indexPathForItemAtPoint:touchPoint];
+    if (indexPath && [gestureRecognizer isKindOfClass:[UITapGestureRecognizer class]])
+    {
+        return NO;
+    }
+    return YES;
+}
+
+- (void) activateDeletionMode:(UILongPressGestureRecognizer*)gr
+{
+    if (gr.state == UIGestureRecognizerStateBegan)
+    {
+        NSIndexPath* indexPath = [self.collectionView indexPathForItemAtPoint:[gr locationInView:self.collectionView]];
+        if (indexPath)
+        {
+            self.isDeletionModeActive = YES;
+            RNProjectsLayout* layout = (RNProjectsLayout *)self.collectionView.collectionViewLayout;
+            [layout invalidateLayout];
+        }
+    }
+}
+
+- (void) endDeletionMode:(UITapGestureRecognizer *)gr
+{
+    if (self.isDeletionModeActive)
+    {
+        NSIndexPath *indexPath = [self.collectionView indexPathForItemAtPoint:[gr locationInView:self.collectionView]];
+        if (!indexPath)
+        {
+            self.isDeletionModeActive = NO;
+            RNProjectsLayout *layout = (RNProjectsLayout *)self.collectionView.collectionViewLayout;
+            [layout invalidateLayout];
+        }
+    }
+}
 @end

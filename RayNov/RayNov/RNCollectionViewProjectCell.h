@@ -11,5 +11,6 @@
 @interface RNCollectionViewProjectCell : UICollectionViewCell
 
 @property (strong, nonatomic) NSString* projectName;
+@property (strong, nonatomic) UIButton* deleteButton;
 
 @end
