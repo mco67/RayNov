@@ -5,6 +5,7 @@
 
 
 extern const struct RNRoomAttributes {
+	__unsafe_unretained NSString *dummy;
 } RNRoomAttributes;
 
 extern const struct RNRoomRelationships {
@@ -23,6 +24,7 @@ extern const struct RNRoomFetchedProperties {
 @class RNWall;
 
 
+
 @interface RNRoomID : NSManagedObjectID {}
 @end
 
@@ -31,6 +33,20 @@ extern const struct RNRoomFetchedProperties {
 + (NSString*)entityName;
 + (NSEntityDescription*)entityInManagedObjectContext:(NSManagedObjectContext*)moc_;
 - (RNRoomID*)objectID;
+
+
+
+
+
+@property (nonatomic, strong) NSNumber* dummy;
+
+
+
+@property BOOL dummyValue;
+- (BOOL)dummyValue;
+- (void)setDummyValue:(BOOL)value_;
+
+//- (BOOL)validateDummy:(id*)value_ error:(NSError**)error_;
 
 
 
@@ -77,6 +93,15 @@ extern const struct RNRoomFetchedProperties {
 @end
 
 @interface _RNRoom (CoreDataGeneratedPrimitiveAccessors)
+
+
+- (NSNumber*)primitiveDummy;
+- (void)setPrimitiveDummy:(NSNumber*)value;
+
+- (BOOL)primitiveDummyValue;
+- (void)setPrimitiveDummyValue:(BOOL)value_;
+
+
 
 
 

@@ -7,18 +7,13 @@
 //
 
 #import <UIKit/UIKit.h>
+#import "RNGridViewController.h"
 
 @class RNEditProjectViewController;
 
-@protocol RNEditProjectViewControllerDelegate <NSObject>
 
-- (void) editProjectViewControllerDidCancel:(RNEditProjectViewController*)controller;
+@interface RNEditProjectViewController : RNGridViewController
 
-@end
+@property (strong, nonatomic) RNProject* project;
 
-
-@interface RNEditProjectViewController : UIViewController
-
-@property (weak, nonatomic) id<RNEditProjectViewControllerDelegate> delegate;
- 
 @end

@@ -7,16 +7,8 @@
 //
 
 #import <UIKit/UIKit.h>
+#import "RNGridLayout.h"
 
-
-@protocol RNProjectsLayoutDelegate
-
-@required
-- (BOOL) isDeletionModeActiveForCollectionView:(UICollectionView*)collectionView layout:(UICollectionViewLayout*)collectionViewLayout;
-
-@end
-
-
-@interface RNProjectsLayout : UICollectionViewFlowLayout
+@interface RNProjectsLayout : RNGridLayout
 
 @end

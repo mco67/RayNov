@@ -1,18 +1,18 @@
 //
-//  RNProjectsLayoutAttributes.m
+//  RNGridLayoutAttributes.m
 //  RayNov
 //
-//  Created by Mathieu Cordebard on 28/11/2013.
+//  Created by Mathieu Cordebard on 29/11/2013.
 //  Copyright (c) 2013 Mathieu Cordebard. All rights reserved.
 //
 
-#import "RNProjectsLayoutAttributes.h"
+#import "RNGridLayoutAttributes.h"
 
-@implementation RNProjectsLayoutAttributes
+@implementation RNGridLayoutAttributes
 
 - (id) copyWithZone:(NSZone *)zone
 {
-    RNProjectsLayoutAttributes* attributes = [super copyWithZone:zone];
+    RNGridLayoutAttributes* attributes = [super copyWithZone:zone];
     attributes.deleteButtonHidden = _deleteButtonHidden;
     return attributes;
 }
@@ -20,4 +20,5 @@
 - (BOOL) isEqual:(id)other {
     return NO;
 }
-@end;
+
+@end

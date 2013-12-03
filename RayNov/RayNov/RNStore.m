@@ -6,26 +6,25 @@
 //  Copyright (c) 2013 Mathieu Cordebard. All rights reserved.
 //
 
-#import "RNProjectStore.h"
+#import "RNStore.h"
 #import "RNProject.h"
+#import "RNRoom.h"
 
-@interface  RNProjectStore ()
+@interface  RNStore ()
 
-@property (strong, nonatomic) NSManagedObjectContext* managedObjectContext;
-@property (strong, nonatomic) NSManagedObjectModel* managedObjectModel;
-@property (strong, nonatomic) NSPersistentStoreCoordinator* persistentStoreCoordinator;
+
 
 @end
 
 
-@implementation RNProjectStore
+@implementation RNStore
 
 #pragma mark - Singleton implementation
 
-+ (RNProjectStore*) instance
++ (RNStore*) instance
 {
-    static RNProjectStore* store = nil;
-    if (!store) store = [[RNProjectStore alloc] init];
+    static RNStore* store = nil;
+    if (!store) store = [[RNStore alloc] init];
     return store;
 }
 
@@ -54,26 +53,6 @@
     return self;
 }
 
-- (RNProject*) createProjectWithName:(NSString*)projectName andError:(NSError**)error
-{
-    // Check the projectName unicity
-    if (![self checkProjectNameUnicity:projectName]) {
-        *error = [NSError errorWithDomain:@"RNStore" code:1 userInfo:nil];
-        return nil;
-    }
-    
-    // Create the new project object
-    RNProject* project = [RNProject insertInManagedObjectContext:self.managedObjectContext];
-    project.name = projectName;
-    project.creationDate = [NSDate date];
-    
-    return project;
-}
-
-- (void) deleteProject:(RNProject*)project
-{
-    [self.managedObjectContext deleteObject:project];
-}
 
 - (void) saveContext
 {
@@ -86,14 +65,16 @@
     }
 }
 
-- (NSFetchedResultsController*) createFetchedResultControllerWithDelegate:(id<NSFetchedResultsControllerDelegate>)delegate
+
+
+- (NSFetchedResultsController*) createRoomsFetchedResultControllerForProject:(RNProject*)project andDelegate:(id<NSFetchedResultsControllerDelegate>)delegate
 {
     NSFetchRequest* fetchRequest = [[NSFetchRequest alloc] init];
-    [fetchRequest setEntity:[RNProject entityInManagedObjectContext:self.managedObjectContext]];
+    [fetchRequest setEntity:[RNRoom entityInManagedObjectContext:self.managedObjectContext]];
+    [fetchRequest setPredicate:[NSPredicate predicateWithFormat:@"project.siteName like %@", project.siteName]];
+    [fetchRequest setFetchBatchSize:20];
     NSSortDescriptor* sort = [[NSSortDescriptor alloc] initWithKey:@"creationDate" ascending:NO];
     [fetchRequest setSortDescriptors:@[sort]];
-    [fetchRequest setFetchBatchSize:20];
-    
     NSFetchedResultsController* fetchedResultsController = [[NSFetchedResultsController alloc] initWithFetchRequest:fetchRequest
                                                                                                managedObjectContext:self.managedObjectContext
                                                                                                  sectionNameKeyPath:nil
@@ -105,18 +86,6 @@
 
 
 
-- (BOOL) checkProjectNameUnicity:(NSString*)projectName
-{
-    // Create the request
-    NSFetchRequest* request = [[NSFetchRequest alloc] init];
-    [request setEntity:[RNProject entityInManagedObjectContext:self.managedObjectContext]];
-    [request setPredicate:[NSPredicate predicateWithFormat:@"name like %@", projectName]];
-    
-    // Execute request
-    NSError* error = nil;
-    NSArray* fetchedProjects = [self.managedObjectContext executeFetchRequest:request error:&error];
-    return !(fetchedProjects && [fetchedProjects count]>0);
-}
 
 
 

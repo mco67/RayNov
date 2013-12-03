@@ -4,6 +4,7 @@
 #import "_RNRoom.h"
 
 const struct RNRoomAttributes RNRoomAttributes = {
+	.dummy = @"dummy",
 };
 
 const struct RNRoomRelationships RNRoomRelationships = {
@@ -42,9 +43,40 @@ const struct RNRoomFetchedProperties RNRoomFetchedProperties = {
 + (NSSet*)keyPathsForValuesAffectingValueForKey:(NSString*)key {
 	NSSet *keyPaths = [super keyPathsForValuesAffectingValueForKey:key];
 	
+	if ([key isEqualToString:@"dummyValue"]) {
+		NSSet *affectingKey = [NSSet setWithObject:@"dummy"];
+		keyPaths = [keyPaths setByAddingObjectsFromSet:affectingKey];
+		return keyPaths;
+	}
 
 	return keyPaths;
 }
+
+
+
+
+@dynamic dummy;
+
+
+
+- (BOOL)dummyValue {
+	NSNumber *result = [self dummy];
+	return [result boolValue];
+}
+
+- (void)setDummyValue:(BOOL)value_ {
+	[self setDummy:[NSNumber numberWithBool:value_]];
+}
+
+- (BOOL)primitiveDummyValue {
+	NSNumber *result = [self primitiveDummy];
+	return [result boolValue];
+}
+
+- (void)setPrimitiveDummyValue:(BOOL)value_ {
+	[self setPrimitiveDummy:[NSNumber numberWithBool:value_]];
+}
+
 
 
 

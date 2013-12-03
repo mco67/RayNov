@@ -7,39 +7,68 @@
 //
 
 #import "RNEditProjectViewController.h"
+#import "RNRoomsLayout.h"
+#import "RNRoomItem.h"
+#import "RNProjectInfoViewController.h"
 
-@interface RNEditProjectViewController ()
+@interface RNEditProjectViewController () <NSFetchedResultsControllerDelegate>
 
 @end
 
 @implementation RNEditProjectViewController
 
-- (id)initWithNibName:(NSString *)nibNameOrNil bundle:(NSBundle *)nibBundleOrNil
-{
-    self = [super initWithNibName:nibNameOrNil bundle:nibBundleOrNil];
-    if (self) {
-        // Custom initialization
-    }
-    return self;
-}
+#pragma mark - lifecycle
 
-- (void)viewDidLoad
+- (void) viewDidLoad
 {
     [super viewDidLoad];
-	// Do any additional setup after loading the view.
+    
+    // Configure the collectionView
+    self.collectionView.collectionViewLayout = [[RNRoomsLayout alloc] init];
+    [self.collectionView registerClass:[RNRoomItem class] forCellWithReuseIdentifier:@"RoomCell"];
+    
+    // Create and initialize the fetchedResultController
+    NSError *error;
+    /*self.fetchedResultsController = [[RNStore instance] createRoomsFetchedResultControllerForProject:self.project andDelegate:self];
+	if (![self.fetchedResultsController performFetch:&error]) {
+		NSLog(@"Unresolved error %@, %@", error, [error userInfo]);
+		exit(-1);  // Fail
+	}*/
 }
 
-- (void)didReceiveMemoryWarning
+- (void) viewWillAppear:(BOOL)animated
 {
-    [super didReceiveMemoryWarning];
-    // Dispose of any resources that can be recreated.
+    self.navigationItem.title = self.project.siteName;
 }
+
+#pragma mark - UICollectionViewDataSource implementation
+
+- (UICollectionViewCell*)collectionView:(UICollectionView*)collectionView cellForItemAtIndexPath:(NSIndexPath*)indexPath
+{
+    RNRoomItem* cell = (RNRoomItem*)[collectionView dequeueReusableCellWithReuseIdentifier:@"RoomCell" forIndexPath:indexPath];
+    RNProject* project = [self.fetchedResultsController objectAtIndexPath:indexPath];
+    [cell.deleteButton addTarget:self action:@selector(delete:) forControlEvents:UIControlEventTouchUpInside];
+    return cell;
+}
+
 
 #pragma mark - Handle user actions
 
 - (IBAction) cancel:(id)sender
 {
-    [self.delegate editProjectViewControllerDidCancel:self];
+    // Hide the modal view
+    [self dismissViewControllerAnimated:YES completion:nil];
+}
+
+#pragma mark - segue management
+
+- (void) prepareForSegue:(UIStoryboardSegue*)segue sender:(id)sender
+{
+    if ([segue.identifier isEqualToString:@"ProjectInfo"]) {
+        UINavigationController* navigationController = segue.destinationViewController;
+        RNProjectInfoViewController* projectInfoViewController = (RNProjectInfoViewController*)[navigationController viewControllers][0];
+        projectInfoViewController.project = self.project;
+    }
 }
 
 

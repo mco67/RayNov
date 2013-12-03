@@ -1,14 +1,14 @@
 //
-//  RNProjectsLayout.m
+//  RNRoomsLayout.m
 //  RayNov
 //
-//  Created by Mathieu Cordebard on 28/11/2013.
+//  Created by Mathieu Cordebard on 29/11/2013.
 //  Copyright (c) 2013 Mathieu Cordebard. All rights reserved.
 //
 
-#import "RNProjectsLayout.h"
+#import "RNRoomsLayout.h"
 
-@implementation RNProjectsLayout
+@implementation RNRoomsLayout
 
 - (id) init
 {

@@ -7,7 +7,8 @@
 //
 
 #import <UIKit/UIKit.h>
+#import "RNGridViewController.h"
 
-@interface RNProjectsViewController : UICollectionViewController
+@interface RNProjectsViewController : RNGridViewController
 
 @end

@@ -4,12 +4,14 @@
 #import "_RNProject.h"
 
 const struct RNProjectAttributes RNProjectAttributes = {
-	.clientName = @"clientName",
 	.creationDate = @"creationDate",
-	.name = @"name",
+	.siteName = @"siteName",
+	.siteReference = @"siteReference",
 };
 
 const struct RNProjectRelationships RNProjectRelationships = {
+	.address = @"address",
+	.client = @"client",
 	.rooms = @"rooms",
 };
 
@@ -49,13 +51,6 @@ const struct RNProjectFetchedProperties RNProjectFetchedProperties = {
 
 
 
-@dynamic clientName;
-
-
-
-
-
-
 @dynamic creationDate;
 
 
@@ -63,12 +58,27 @@ const struct RNProjectFetchedProperties RNProjectFetchedProperties = {
 
 
 
-@dynamic name;
+@dynamic siteName;
 
 
 
 
 
+
+@dynamic siteReference;
+
+
+
+
+
+
+@dynamic address;
+
+	
+
+@dynamic client;
+
+	
 
 @dynamic rooms;
 

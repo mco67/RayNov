@@ -7,10 +7,10 @@
 //
 
 #import <UIKit/UIKit.h>
+#import "RNGridItemCell.h"
 
-@interface RNCollectionViewProjectCell : UICollectionViewCell
+@interface RNCollectionViewProjectCell : RNGridItemCell
 
 @property (strong, nonatomic) NSString* projectName;
-@property (strong, nonatomic) UIButton* deleteButton;
 
 @end

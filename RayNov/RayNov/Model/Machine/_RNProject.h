@@ -5,18 +5,22 @@
 
 
 extern const struct RNProjectAttributes {
-	__unsafe_unretained NSString *clientName;
 	__unsafe_unretained NSString *creationDate;
-	__unsafe_unretained NSString *name;
+	__unsafe_unretained NSString *siteName;
+	__unsafe_unretained NSString *siteReference;
 } RNProjectAttributes;
 
 extern const struct RNProjectRelationships {
+	__unsafe_unretained NSString *address;
+	__unsafe_unretained NSString *client;
 	__unsafe_unretained NSString *rooms;
 } RNProjectRelationships;
 
 extern const struct RNProjectFetchedProperties {
 } RNProjectFetchedProperties;
 
+@class RNAddress;
+@class RNClient;
 @class RNRoom;
 
 
@@ -36,16 +40,6 @@ extern const struct RNProjectFetchedProperties {
 
 
 
-@property (nonatomic, strong) NSString* clientName;
-
-
-
-//- (BOOL)validateClientName:(id*)value_ error:(NSError**)error_;
-
-
-
-
-
 @property (nonatomic, strong) NSDate* creationDate;
 
 
@@ -56,12 +50,36 @@ extern const struct RNProjectFetchedProperties {
 
 
 
-@property (nonatomic, strong) NSString* name;
+@property (nonatomic, strong) NSString* siteName;
 
 
 
-//- (BOOL)validateName:(id*)value_ error:(NSError**)error_;
+//- (BOOL)validateSiteName:(id*)value_ error:(NSError**)error_;
 
+
+
+
+
+@property (nonatomic, strong) NSString* siteReference;
+
+
+
+//- (BOOL)validateSiteReference:(id*)value_ error:(NSError**)error_;
+
+
+
+
+
+@property (nonatomic, strong) RNAddress *address;
+
+//- (BOOL)validateAddress:(id*)value_ error:(NSError**)error_;
+
+
+
+
+@property (nonatomic, strong) RNClient *client;
+
+//- (BOOL)validateClient:(id*)value_ error:(NSError**)error_;
 
 
 
@@ -88,22 +106,32 @@ extern const struct RNProjectFetchedProperties {
 @interface _RNProject (CoreDataGeneratedPrimitiveAccessors)
 
 
-- (NSString*)primitiveClientName;
-- (void)setPrimitiveClientName:(NSString*)value;
-
-
-
-
 - (NSDate*)primitiveCreationDate;
 - (void)setPrimitiveCreationDate:(NSDate*)value;
 
 
 
 
-- (NSString*)primitiveName;
-- (void)setPrimitiveName:(NSString*)value;
+- (NSString*)primitiveSiteName;
+- (void)setPrimitiveSiteName:(NSString*)value;
 
 
+
+
+- (NSString*)primitiveSiteReference;
+- (void)setPrimitiveSiteReference:(NSString*)value;
+
+
+
+
+
+- (RNAddress*)primitiveAddress;
+- (void)setPrimitiveAddress:(RNAddress*)value;
+
+
+
+- (RNClient*)primitiveClient;
+- (void)setPrimitiveClient:(RNClient*)value;
 
 
 
