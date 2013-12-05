@@ -8,6 +8,6 @@
 
 #import <UIKit/UIKit.h>
 
-@interface RNClientViewController : UITableViewController
+@interface RNClientTableViewController : UITableViewController
 
 @end

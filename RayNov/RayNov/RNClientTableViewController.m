@@ -6,22 +6,23 @@
 //  Copyright (c) 2013 Mathieu Cordebard. All rights reserved.
 //
 
-#import "RNClientViewController.h"
+#import "RNClientTableViewController.h"
 #import "RNStore+RNClient.h"
+#import "RNClientTableViewCell.h"
 
-@interface RNClientViewController () <NSFetchedResultsControllerDelegate, UISearchBarDelegate, UISearchDisplayDelegate>
+@interface RNClientTableViewController () <NSFetchedResultsControllerDelegate, UISearchBarDelegate, UISearchDisplayDelegate>
 
+@property (weak, nonatomic) IBOutlet UISearchBar* searchBar;
 @property (strong, nonatomic) NSFetchedResultsController* clientsFetchedResultsController;
 @property (strong, nonatomic) NSFetchedResultsController* searchFetchedResultsController;
 @property (strong, nonatomic) UISearchDisplayController* mySearchDisplayController;
-@property (weak, nonatomic) IBOutlet UISearchBar* searchBar;
 @property (copy, nonatomic) NSString* savedSearchTerm;
 @property (nonatomic) NSInteger savedScopeButtonIndex;
 @property (nonatomic) BOOL searchWasActive;
 
 @end
 
-@implementation RNClientViewController
+@implementation RNClientTableViewController
 
 
 #pragma mark - Initialization stuff
@@ -100,16 +101,17 @@
     return [sectionInfo numberOfObjects];
 }
 
-- (void) fetchedResultsController:(NSFetchedResultsController*)fetchedResultsController configureCell:(UITableViewCell*)cell atIndexPath:(NSIndexPath*)indexPath
+- (void) fetchedResultsController:(NSFetchedResultsController*)fetchedResultsController configureCell:(RNClientTableViewCell*)cell atIndexPath:(NSIndexPath*)indexPath
 {
     RNClient* client = (RNClient*)[fetchedResultsController objectAtIndexPath:indexPath];
-    cell.textLabel.text = client.displayName;
+    cell.displayName.text = client.displayName;
+    cell.displayAddress.text = client.displayAddress;
 }
 
 - (UITableViewCell*) tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath
 {
     static NSString* CellIdentifier = @"ClientCell";
-    UITableViewCell* cell = [self.tableView dequeueReusableCellWithIdentifier:CellIdentifier forIndexPath:indexPath];
+    RNClientTableViewCell* cell = (RNClientTableViewCell*)[self.tableView dequeueReusableCellWithIdentifier:CellIdentifier forIndexPath:indexPath];
     [self fetchedResultsController:[self fetchedResultsControllerForTableView:tableView] configureCell:cell atIndexPath:indexPath];
     return cell;
 }

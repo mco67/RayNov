@@ -2,6 +2,7 @@
 
 @interface RNClient : _RNClient {}
 
-@property (copy, nonatomic) NSString* displayName;
+@property (copy, nonatomic, readonly) NSString* displayName;
+@property (copy, nonatomic, readonly) NSString* displayAddress;
 
 @end

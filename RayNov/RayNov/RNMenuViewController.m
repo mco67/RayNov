@@ -15,7 +15,19 @@
 
 - (void) prepareForSegue:(UIStoryboardSegue*)segue sender:(id)sender
 {
+    if ([segue isKindOfClass:[SWRevealViewControllerSegue class]]) {
+        SWRevealViewControllerSegue* revealViewControllerSegue = (SWRevealViewControllerSegue*)segue;
+        SWRevealViewController* revealViewController = self.revealViewController;
+        
+        
+        revealViewControllerSegue.performBlock = ^(SWRevealViewControllerSegue* rvc_segue, UIViewController* svc, UIViewController* dvc) {
+            //UINavigationController* nc = [[UINavigationController alloc] initWithRootViewController:dvc];
+            [revealViewController setFrontViewController:dvc animated:YES];
+        };
+    }
+
     // Restore the frontViewController in full screen
-    [self.revealViewController setFrontViewController:self.revealViewController.frontViewController animated:YES];
+    //[self.revealViewController setFrontViewController:self.revealViewController.frontViewController animated:YES];
 }
+
 @end
