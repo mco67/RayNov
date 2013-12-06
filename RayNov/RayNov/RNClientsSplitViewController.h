@@ -7,9 +7,8 @@
 //
 
 #import <UIKit/UIKit.h>
+#import "RNSplitViewController.h"
 
-@interface RNClientsViewController : UIViewController
-
-@property (weak, nonatomic) IBOutlet UIBarButtonItem* menuButtonItem;
+@interface RNClientsSplitViewController : RNSplitViewController
 
 @end

@@ -55,6 +55,8 @@
 		741F01D6184290B400FF9FE8 /* _RNWindow.m in Sources */ = {isa = PBXBuildFile; fileRef = 741F01C4184290B400FF9FE8 /* _RNWindow.m */; };
 		741F01DF18433B6900FF9FE8 /* RNProjectInfoViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 741F01DE18433B6900FF9FE8 /* RNProjectInfoViewController.m */; };
 		741F01F61844E9F200FF9FE8 /* RNStore.m in Sources */ = {isa = PBXBuildFile; fileRef = 741F01F51844E9F200FF9FE8 /* RNStore.m */; };
+		7447A3AE1850CFC400417705 /* RNSplitViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 7447A3AD1850CFC400417705 /* RNSplitViewController.m */; };
+		7447A3B9185194F200417705 /* RNSplitContentView.m in Sources */ = {isa = PBXBuildFile; fileRef = 7447A3B8185194F200417705 /* RNSplitContentView.m */; };
 		744ABABC183FDF32009A6366 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 744ABABB183FDF32009A6366 /* Foundation.framework */; };
 		744ABABE183FDF32009A6366 /* CoreGraphics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 744ABABD183FDF32009A6366 /* CoreGraphics.framework */; };
 		744ABAC0183FDF32009A6366 /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 744ABABF183FDF32009A6366 /* UIKit.framework */; };
@@ -80,7 +82,7 @@
 		74D5AD8618469862004AADBF /* RNEditProjectViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 74D5AD8518469862004AADBF /* RNEditProjectViewController.m */; };
 		74E2C580184E029F00AF0668 /* NSString+RNString.m in Sources */ = {isa = PBXBuildFile; fileRef = 74E2C57F184E029F00AF0668 /* NSString+RNString.m */; };
 		74E2C586184E4EAB00AF0668 /* RNClientTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 74E2C585184E4EAB00AF0668 /* RNClientTableViewCell.m */; };
-		74E2C589184E767C00AF0668 /* RNClientsViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 74E2C588184E767C00AF0668 /* RNClientsViewController.m */; };
+		74E2C589184E767C00AF0668 /* RNClientsSplitViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 74E2C588184E767C00AF0668 /* RNClientsSplitViewController.m */; };
 		A65A653FD14B4AFB91B937EA /* libPods.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 3EC75C741B5C46E6AC3EFC5A /* libPods.a */; };
 /* End PBXBuildFile section */
 
@@ -170,6 +172,10 @@
 		741F01ED1844DAA500FF9FE8 /* common.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = common.h; sourceTree = "<group>"; };
 		741F01F41844E9F200FF9FE8 /* RNStore.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = RNStore.h; sourceTree = "<group>"; };
 		741F01F51844E9F200FF9FE8 /* RNStore.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = RNStore.m; sourceTree = "<group>"; };
+		7447A3AC1850CFC400417705 /* RNSplitViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = RNSplitViewController.h; sourceTree = "<group>"; };
+		7447A3AD1850CFC400417705 /* RNSplitViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = RNSplitViewController.m; sourceTree = "<group>"; };
+		7447A3B7185194F200417705 /* RNSplitContentView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = RNSplitContentView.h; sourceTree = "<group>"; };
+		7447A3B8185194F200417705 /* RNSplitContentView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = RNSplitContentView.m; sourceTree = "<group>"; };
 		744ABAB8183FDF32009A6366 /* RayNov.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = RayNov.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		744ABABB183FDF32009A6366 /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = System/Library/Frameworks/Foundation.framework; sourceTree = SDKROOT; };
 		744ABABD183FDF32009A6366 /* CoreGraphics.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreGraphics.framework; path = System/Library/Frameworks/CoreGraphics.framework; sourceTree = SDKROOT; };
@@ -209,8 +215,8 @@
 		74E2C57F184E029F00AF0668 /* NSString+RNString.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "NSString+RNString.m"; sourceTree = "<group>"; };
 		74E2C584184E4EAB00AF0668 /* RNClientTableViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = RNClientTableViewCell.h; sourceTree = "<group>"; };
 		74E2C585184E4EAB00AF0668 /* RNClientTableViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = RNClientTableViewCell.m; sourceTree = "<group>"; };
-		74E2C587184E767C00AF0668 /* RNClientsViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = RNClientsViewController.h; sourceTree = "<group>"; };
-		74E2C588184E767C00AF0668 /* RNClientsViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = RNClientsViewController.m; sourceTree = "<group>"; };
+		74E2C587184E767C00AF0668 /* RNClientsSplitViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = RNClientsSplitViewController.h; sourceTree = "<group>"; };
+		74E2C588184E767C00AF0668 /* RNClientsSplitViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = RNClientsSplitViewController.m; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -242,14 +248,8 @@
 		741360621848CE1800B7207A /* Generic */ = {
 			isa = PBXGroup;
 			children = (
-				741360631848CE4400B7207A /* RNGridViewController.h */,
-				741360641848CE4400B7207A /* RNGridViewController.m */,
-				741360661848CE6400B7207A /* RNGridItemCell.h */,
-				741360671848CE6400B7207A /* RNGridItemCell.m */,
-				741360691848CEF500B7207A /* RNGridLayout.h */,
-				7413606A1848CEF500B7207A /* RNGridLayout.m */,
-				7413606C1848D84600B7207A /* RNGridLayoutAttributes.h */,
-				7413606D1848D84600B7207A /* RNGridLayoutAttributes.m */,
+				7447A3B01850CFE100417705 /* SplitViewController */,
+				7447A3AF1850CFC900417705 /* GridViewController */,
 			);
 			name = Generic;
 			sourceTree = "<group>";
@@ -266,8 +266,8 @@
 		741360D11849D0E300B7207A /* Client */ = {
 			isa = PBXGroup;
 			children = (
-				74E2C587184E767C00AF0668 /* RNClientsViewController.h */,
-				74E2C588184E767C00AF0668 /* RNClientsViewController.m */,
+				74E2C587184E767C00AF0668 /* RNClientsSplitViewController.h */,
+				74E2C588184E767C00AF0668 /* RNClientsSplitViewController.m */,
 				741360D21849D10800B7207A /* RNClientTableViewController.h */,
 				741360D31849D10800B7207A /* RNClientTableViewController.m */,
 				74E2C584184E4EAB00AF0668 /* RNClientTableViewCell.h */,
@@ -365,6 +365,32 @@
 				74A8D0C1184A8B010025D701 /* RNStore+RNClient.m */,
 			);
 			name = Store;
+			sourceTree = "<group>";
+		};
+		7447A3AF1850CFC900417705 /* GridViewController */ = {
+			isa = PBXGroup;
+			children = (
+				741360631848CE4400B7207A /* RNGridViewController.h */,
+				741360641848CE4400B7207A /* RNGridViewController.m */,
+				741360661848CE6400B7207A /* RNGridItemCell.h */,
+				741360671848CE6400B7207A /* RNGridItemCell.m */,
+				741360691848CEF500B7207A /* RNGridLayout.h */,
+				7413606A1848CEF500B7207A /* RNGridLayout.m */,
+				7413606C1848D84600B7207A /* RNGridLayoutAttributes.h */,
+				7413606D1848D84600B7207A /* RNGridLayoutAttributes.m */,
+			);
+			name = GridViewController;
+			sourceTree = "<group>";
+		};
+		7447A3B01850CFE100417705 /* SplitViewController */ = {
+			isa = PBXGroup;
+			children = (
+				7447A3AC1850CFC400417705 /* RNSplitViewController.h */,
+				7447A3AD1850CFC400417705 /* RNSplitViewController.m */,
+				7447A3B7185194F200417705 /* RNSplitContentView.h */,
+				7447A3B8185194F200417705 /* RNSplitContentView.m */,
+			);
+			name = SplitViewController;
 			sourceTree = "<group>";
 		};
 		744ABAAF183FDF32009A6366 = {
@@ -680,6 +706,7 @@
 				741360D01849D0C600B7207A /* _RNAddress.m in Sources */,
 				7413606B1848CEF500B7207A /* RNGridLayout.m in Sources */,
 				74D3E19D1847DDA50055BEEA /* RNProjectsLayout.m in Sources */,
+				7447A3AE1850CFC400417705 /* RNSplitViewController.m in Sources */,
 				741F01CA184290B400FF9FE8 /* RNRoom.m in Sources */,
 				741F01D4184290B400FF9FE8 /* _RNSurface.m in Sources */,
 				741360CA1849C0E800B7207A /* RNClient.m in Sources */,
@@ -687,6 +714,7 @@
 				74E2C580184E029F00AF0668 /* NSString+RNString.m in Sources */,
 				74C773851846880B00074061 /* RNCollectionViewProjectCell.m in Sources */,
 				741360C41849364900B7207A /* RNRoomsLayout.m in Sources */,
+				7447A3B9185194F200417705 /* RNSplitContentView.m in Sources */,
 				74D5AD8618469862004AADBF /* RNEditProjectViewController.m in Sources */,
 				741F01D2184290B400FF9FE8 /* _RNRadiator.m in Sources */,
 				741F01C9184290B400FF9FE8 /* RNRadiator.m in Sources */,
@@ -704,7 +732,7 @@
 				741F01CE184290B400FF9FE8 /* _RNCeiling.m in Sources */,
 				741F01DF18433B6900FF9FE8 /* RNProjectInfoViewController.m in Sources */,
 				741360651848CE4400B7207A /* RNGridViewController.m in Sources */,
-				74E2C589184E767C00AF0668 /* RNClientsViewController.m in Sources */,
+				74E2C589184E767C00AF0668 /* RNClientsSplitViewController.m in Sources */,
 				741F01C7184290B400FF9FE8 /* RNGround.m in Sources */,
 				741F01CC184290B400FF9FE8 /* RNWall.m in Sources */,
 				7413606E1848D84600B7207A /* RNGridLayoutAttributes.m in Sources */,

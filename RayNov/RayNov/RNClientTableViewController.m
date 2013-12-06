@@ -9,6 +9,7 @@
 #import "RNClientTableViewController.h"
 #import "RNStore+RNClient.h"
 #import "RNClientTableViewCell.h"
+#import <SWRevealViewController/SWRevealViewController.h>
 
 @interface RNClientTableViewController () <NSFetchedResultsControllerDelegate, UISearchBarDelegate, UISearchDisplayDelegate>
 
@@ -57,6 +58,8 @@
 
 - (void) viewDidLoad
 {
+    [super viewDidLoad];
+    
     // restore search settings if they were saved in didReceiveMemoryWarning.
     if (self.savedSearchTerm)
     {
@@ -65,6 +68,9 @@
         [self.searchDisplayController.searchBar setText:self.savedSearchTerm];
         self.savedSearchTerm = nil;
     }
+    
+    // iOS7 display issue
+    self.edgesForExtendedLayout = UIRectEdgeNone;
 }
 
 
@@ -183,7 +189,7 @@
             break;
             
         case NSFetchedResultsChangeUpdate:
-            [self fetchedResultsController:controller configureCell:[tableView cellForRowAtIndexPath:theIndexPath] atIndexPath:theIndexPath];
+            [self fetchedResultsController:controller configureCell:(RNClientTableViewCell*)[tableView cellForRowAtIndexPath:theIndexPath] atIndexPath:theIndexPath];
             break;
             
         case NSFetchedResultsChangeMove:
@@ -199,13 +205,6 @@
 }
 
 
-
-- (IBAction) cancel:(id)sender
-{
-    [self dismissViewControllerAnimated:YES completion:nil];
-}
-
-
 #pragma mark - Private methods
 
 - (NSFetchedResultsController*) fetchedResultsControllerForTableView:(UITableView*)tableView
@@ -216,6 +215,10 @@
 - (UITableView*) tableViewForFetchedResultsController:(NSFetchedResultsController*)controller
 {
     return (controller==self.clientsFetchedResultsController)?self.tableView:self.searchDisplayController.searchResultsTableView;
+}
+
+- (UINavigationController *)navigationController {
+    return nil;
 }
 
 
