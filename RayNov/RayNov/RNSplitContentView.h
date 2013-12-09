@@ -10,6 +10,6 @@
 
 @interface RNSplitContentView : UIView
 
-- (id) initWithMenuView:(UIView*)menuView andDetailsView:(UIView*)detailsView;
+- (id) initWithLeftView:(UIView*)leftView andRightView:(UIView*)rightView;
 
 @end

@@ -11,57 +11,42 @@
 
 #pragma mark - RNSplitViewController Class
 
-@interface RNSplitViewController ()
-
-@property (strong, nonatomic) UIViewController* menuViewController;
-@property (strong, nonatomic) UIViewController* detailsViewController;
-
-@end
 
 @implementation RNSplitViewController
-
-- (id) initWithCoder:(NSCoder*)aDecoder
-{
-    if (self = [super initWithCoder:aDecoder]) {
-        
-    }
-    return self;
-}
 
 - (void) loadView
 {
     // Call each segue separately to load nested viewControllers
-    if (self.storyboard && self.menuViewController == nil) {
-        @try { [self performSegueWithIdentifier:RNSegueMenuIdentifier sender:nil]; }
+    if (self.storyboard && self.leftViewController == nil) {
+        @try { [self performSegueWithIdentifier:RNSegueLeftIdentifier sender:nil]; }
         @catch (NSException *exception) {}
-        @try { [self performSegueWithIdentifier:RNSegueDetailsIdentifier sender:nil]; }
+        @try { [self performSegueWithIdentifier:RNSegueRightIdentifier sender:nil]; }
         @catch (NSException* exception) {}
     }
     
     // Set our contentView to the controllers view
-    self.view = [[RNSplitContentView alloc] initWithMenuView:self.menuViewController.view
-                                              andDetailsView:self.detailsViewController.view];
-    
+    self.view = [[RNSplitContentView alloc] initWithLeftView:self.leftViewController.view
+                                              andRightView:self.rightViewController.view];
 }
 
 #pragma mark storyboard support
 
-static NSString* const RNSegueMenuIdentifier = @"rn_menu";
-static NSString* const RNSegueDetailsIdentifier = @"rn_details";
+static NSString* const RNSegueLeftIdentifier = @"rn_left";
+static NSString* const RNSegueRightIdentifier = @"rn_right";
 
 - (void) prepareForSegue:(RNSplitViewControllerSegue*)segue sender:(id)sender
 {
     NSString* identifier = segue.identifier;
     if ([segue isKindOfClass:[RNSplitViewControllerSegue class]] && sender == nil) {
-        if ([identifier isEqualToString:RNSegueMenuIdentifier]) {
+        if ([identifier isEqualToString:RNSegueLeftIdentifier]) {
             segue.performBlock = ^(RNSplitViewControllerSegue* rvc_segue, UIViewController* svc, UIViewController* dvc) {
-                self.menuViewController = dvc;
+                self.leftViewController = dvc;
                 [self addChildViewController:dvc];
             };
         }
-        else if ([identifier isEqualToString:RNSegueDetailsIdentifier] && sender == nil) {
+        else if ([identifier isEqualToString:RNSegueRightIdentifier] && sender == nil) {
             segue.performBlock = ^(RNSplitViewControllerSegue* rvc_segue, UIViewController* svc, UIViewController* dvc) {
-                self.detailsViewController = dvc;
+                self.rightViewController = dvc;
                 [self addChildViewController:dvc];
             };
         }

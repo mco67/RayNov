@@ -8,8 +8,9 @@
 
 #import <UIKit/UIKit.h>
 #import "RNClient.h"
+#import "RNClientTableViewController.h"
 
-@interface RNClientInfoViewController : UITableViewController
+@interface RNClientDetailsViewController : UITableViewController <RNTableViewControllerDelegate>
 
 @property (strong, nonatomic) RNClient* client;
 

@@ -10,6 +10,9 @@
 
 @interface RNSplitViewController : UIViewController
 
+@property (strong, nonatomic) UIViewController* leftViewController;
+@property (strong, nonatomic) UIViewController* rightViewController;
+
 @end
 
 

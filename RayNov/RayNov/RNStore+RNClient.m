@@ -52,9 +52,9 @@
 }
 
 
-- (NSFetchedResultsController*) getSearchFetchedResultsCtrlWithSearch:(NSString*)searchString andDelegate:(id<NSFetchedResultsControllerDelegate>)delegate
+- (NSFetchedResultsController*) getSearchFetchedResultsCtrlWithSearch:(NSString*)searchString
 {
-    NSArray* sortDescriptors = @[[[NSSortDescriptor alloc] initWithKey:@"lastName" ascending:NO]];
+    NSArray* sortDescriptors = @[[[NSSortDescriptor alloc] initWithKey:@"lastName" ascending:YES]];
     NSPredicate* filterPredicate = nil;
     
     // Create the fetchRequest for the entity.
@@ -82,9 +82,7 @@
     NSFetchedResultsController* fetchedResultsController =[[NSFetchedResultsController alloc] initWithFetchRequest:fetchRequest
                                                                                               managedObjectContext:self.managedObjectContext
                                                                                                 sectionNameKeyPath:nil
-                                                                                                         cacheName:nil];
-    fetchedResultsController.delegate = delegate;
-    
+                                                                                                         cacheName:nil];    
     NSError *error = nil;
     if (![fetchedResultsController performFetch:&error])
     {
@@ -93,6 +91,13 @@
     }
     return fetchedResultsController;
 }
+
+
+- (void) deleteClient:(RNClient*)client
+{
+    [self.managedObjectContext deleteObject:client];
+}
+
 
 #pragma mark - Private methods
 

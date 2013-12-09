@@ -1,18 +1,19 @@
 //
-//  RNClientInfoViewController.m
+//  RNClientEditViewController.m
 //  RayNov
 //
 //  Created by Mathieu Cordebard on 02/12/2013.
 //  Copyright (c) 2013 Mathieu Cordebard. All rights reserved.
 //
 
-#import "RNClientInfoViewController.h"
+#import "RNClientEditViewController.h"
+#import "RNClientTableViewController.h"
 #import "RNStore+RNClient.h"
 #import "RNClient.h"
 #import "RNAddress.h"
 
 
-@interface RNClientInfoViewController ()
+@interface RNClientEditViewController ()
 
 @property (weak, nonatomic) IBOutlet UITextField* clientLastName;
 @property (weak, nonatomic) IBOutlet UITextField* clientFirstName;
@@ -26,21 +27,34 @@
 @property (weak, nonatomic) IBOutlet UITextField* clientFaxPhoneNumber;
 @property (weak, nonatomic) IBOutlet UITextField* clientEmail;
 @property (weak, nonatomic) IBOutlet UIBarButtonItem* applyButton;
+@property (weak, nonatomic) IBOutlet UIBarButtonItem* cancelButton;
 @property (weak, nonatomic) IBOutlet UILabel* clientNameErrorLabel;
+@property (nonatomic) BOOL updateMode;
 
 @end
 
-@implementation RNClientInfoViewController
+@implementation RNClientEditViewController
 
 - (void) viewDidLoad
 {
-    self.clientNameErrorLabel.hidden = YES;
-    self.applyButton.enabled = [self isFormValid];
-    [self.clientFirstName addTarget:self action:@selector(clientNameDidChange:) forControlEvents:UIControlEventEditingChanged];
-    [self.clientLastName addTarget:self action:@selector(clientNameDidChange:) forControlEvents:UIControlEventEditingChanged];
+    // Set event handlers
+    [self.clientFirstName addTarget:self action:@selector(clientFirstNameDidChange:) forControlEvents:UIControlEventEditingChanged];
+    [self.clientLastName addTarget:self action:@selector(clientLastNameDidChange:) forControlEvents:UIControlEventEditingChanged];
     
     // Update information
-    if (self.client) {
+    [self updateFromClient:self.client];
+    
+    [super viewDidLoad];
+}
+
+- (void) updateFromClient:(RNClient*)client
+{
+    // Check if we are in update mode
+    self.updateMode = (client != nil);
+    
+    if (self.updateMode) {
+        // Update self client
+        self.client = client;
         
         // Update title
         self.navigationItem.title = [NSString stringWithFormat:@"Client %@", self.client.displayName];
@@ -57,8 +71,15 @@
         self.clientTown.text = self.client.address.town;
         self.clientPostalCode.text = [self.client.address.postalCode stringValue];
         self.clientCountry.text = self.client.address.country;
+        
+        // Update error label and buttons
+        self.clientNameErrorLabel.hidden = YES;
+        self.applyButton.enabled = [self isFormValid];
+        
+        // Lock lastName and firstname field
+        self.clientLastName.userInteractionEnabled = FALSE;
+        self.clientFirstName.userInteractionEnabled = FALSE;
     }
-    [super viewDidLoad];
 }
 
 - (IBAction) done:(id)sender
@@ -66,21 +87,23 @@
     // Fetch key information
     NSString* clientLastName = self.clientLastName.text;
     NSString* clientFirstName = self.clientFirstName.text;
-
-    // Create and configure the project entity
-    NSError* error = nil;
-    RNClient* client = [[RNStore instance] createClientWithLastName:clientLastName andFirstName:clientFirstName andError:&error];
-    if (!client || error) {
-        if (error.code == ERROR_DUPLICATE_CLIENTNAME) self.clientNameErrorLabel.hidden = NO;
-        return;
+    
+    if (!self.updateMode) {
+        // Create and configure the project entity
+        NSError* error = nil;
+        self.client = [[RNStore instance] createClientWithLastName:clientLastName andFirstName:clientFirstName andError:&error];
+        if (!self.client || error) {
+            if (error.code == ERROR_DUPLICATE_CLIENTNAME) self.clientNameErrorLabel.hidden = NO;
+            return;
+        }
     }
-    client.phoneNumber = self.clientPhoneNumber.text;
-    client.mobilePhoneNumber = self.clientMobilePhoneNumber.text;
-    client.faxPhoneNumber = self.clientFaxPhoneNumber.text;
-    client.emailAddress = self.clientEmail.text;
+    self.client.phoneNumber = self.clientPhoneNumber.text;
+    self.client.mobilePhoneNumber = self.clientMobilePhoneNumber.text;
+    self.client.faxPhoneNumber = self.clientFaxPhoneNumber.text;
+    self.client.emailAddress = self.clientEmail.text;
     
     // Create relative address object
-    RNAddress* clientAddress = client.address;
+    RNAddress* clientAddress = self.client.address;
     clientAddress.postalAddress1 = self.clientAddress1.text;
     clientAddress.postalAddress2 = self.clientAddress2.text;
     clientAddress.town = self.clientTown.text;
@@ -90,12 +113,31 @@
     // Store the project entity
     [[RNStore instance] saveContext];
     
+    // Send event for client modification in update mode
+    if (self.updateMode) {
+        [self.delegate onClientModified:self.client];
+    }
+    
     // Hide the modal view
     [self dismissViewControllerAnimated:YES completion:nil];
 }
 
-- (void) clientNameDidChange:(UITextField*)textField
+- (IBAction) cancel:(id)sender
 {
+    // Hide the modal view
+    [self dismissViewControllerAnimated:YES completion:nil];
+}
+
+- (void) clientFirstNameDidChange:(UITextField*)textField
+{
+    self.clientFirstName.text = [self.clientFirstName.text capitalizedString];
+    self.clientNameErrorLabel.hidden = YES;
+    self.applyButton.enabled = [self isFormValid];
+}
+
+- (void) clientLastNameDidChange:(UITextField*)textField
+{
+    self.clientLastName.text = [self.clientLastName.text uppercaseString];
     self.clientNameErrorLabel.hidden = YES;
     self.applyButton.enabled = [self isFormValid];
 }
@@ -104,6 +146,7 @@
 {
     return !IsNullOrEmpty(self.clientLastName.text) && !IsNullOrEmpty(self.clientFirstName.text);
 }
+
 
 
 @end

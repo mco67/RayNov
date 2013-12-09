@@ -7,7 +7,8 @@
 //
 
 #import <UIKit/UIKit.h>
+#import "RNTableViewController.h"
 
-@interface RNClientTableViewController : UITableViewController
+@interface RNClientTableViewController : RNTableViewController
 
 @end

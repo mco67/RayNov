@@ -15,6 +15,8 @@
 
 - (RNClient*) createClientWithLastName:(NSString*)lastName andFirstName:(NSString*)firstName andError:(NSError**)error;
 
-- (NSFetchedResultsController*) getSearchFetchedResultsCtrlWithSearch:(NSString*)searchString andDelegate:(id<NSFetchedResultsControllerDelegate>)delegate;
+- (NSFetchedResultsController*) getSearchFetchedResultsCtrlWithSearch:(NSString*)searchString;
+
+- (void) deleteClient:(RNClient*)client;
 
 @end

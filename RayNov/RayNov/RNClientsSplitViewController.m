@@ -8,6 +8,9 @@
 
 #import "RNClientsSplitViewController.h"
 #import <SWRevealViewController/SWRevealViewController.h>
+#import "RNClientTableViewController.h"
+#import "RNClientDetailsViewController.h"
+
 
 @interface RNClientsSplitViewController ()
 
@@ -21,6 +24,11 @@
 - (void) viewDidLoad
 {
     [super viewDidLoad];
+    
+    // Handle left and right child viewControllers
+    RNClientTableViewController* menuController = (RNClientTableViewController*)self.leftViewController;
+    RNClientDetailsViewController* detailsController = (RNClientDetailsViewController*)self.rightViewController;
+    menuController.delegate = detailsController;
     
     // Handle Button behavior
     [self.menuButtonItem setTarget: self.revealViewController];
