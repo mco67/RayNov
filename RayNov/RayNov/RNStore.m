@@ -7,14 +7,8 @@
 //
 
 #import "RNStore.h"
-#import "RNProject.h"
+#import "RNSite.h"
 #import "RNRoom.h"
-
-@interface  RNStore ()
-
-
-
-@end
 
 
 @implementation RNStore
@@ -67,11 +61,11 @@
 
 
 
-- (NSFetchedResultsController*) createRoomsFetchedResultControllerForProject:(RNProject*)project andDelegate:(id<NSFetchedResultsControllerDelegate>)delegate
+- (NSFetchedResultsController*) createRoomsFetchedResultControllerForSite:(RNSite*)site andDelegate:(id<NSFetchedResultsControllerDelegate>)delegate
 {
     NSFetchRequest* fetchRequest = [[NSFetchRequest alloc] init];
     [fetchRequest setEntity:[RNRoom entityInManagedObjectContext:self.managedObjectContext]];
-    [fetchRequest setPredicate:[NSPredicate predicateWithFormat:@"project.siteName like %@", project.siteName]];
+    [fetchRequest setPredicate:[NSPredicate predicateWithFormat:@"site.siteName like %@", site.siteName]];
     [fetchRequest setFetchBatchSize:20];
     NSSortDescriptor* sort = [[NSSortDescriptor alloc] initWithKey:@"creationDate" ascending:NO];
     [fetchRequest setSortDescriptors:@[sort]];

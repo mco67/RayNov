@@ -6,7 +6,6 @@
 //  Copyright (c) 2013 Mathieu Cordebard. All rights reserved.
 //
 
-#import <UIKit/UIKit.h>
 #import "RNSplitViewController.h"
 
 @interface RNClientsSplitViewController : RNSplitViewController

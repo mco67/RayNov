@@ -1,14 +1,14 @@
-#import "RNProject.h"
+#import "RNSite.h"
 
 
-@interface RNProject ()
+@interface RNSite ()
 
 // Private interface goes here.
 
 @end
 
 
-@implementation RNProject
+@implementation RNSite
 
 // Custom logic goes here.
 

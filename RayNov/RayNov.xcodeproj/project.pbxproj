@@ -40,7 +40,6 @@
 		741F01C5184290B400FF9FE8 /* RNCeiling.m in Sources */ = {isa = PBXBuildFile; fileRef = 741F01A1184290B400FF9FE8 /* RNCeiling.m */; };
 		741F01C6184290B400FF9FE8 /* RNDoor.m in Sources */ = {isa = PBXBuildFile; fileRef = 741F01A3184290B400FF9FE8 /* RNDoor.m */; };
 		741F01C7184290B400FF9FE8 /* RNGround.m in Sources */ = {isa = PBXBuildFile; fileRef = 741F01A5184290B400FF9FE8 /* RNGround.m */; };
-		741F01C8184290B400FF9FE8 /* RNProject.m in Sources */ = {isa = PBXBuildFile; fileRef = 741F01A7184290B400FF9FE8 /* RNProject.m */; };
 		741F01C9184290B400FF9FE8 /* RNRadiator.m in Sources */ = {isa = PBXBuildFile; fileRef = 741F01A9184290B400FF9FE8 /* RNRadiator.m */; };
 		741F01CA184290B400FF9FE8 /* RNRoom.m in Sources */ = {isa = PBXBuildFile; fileRef = 741F01AB184290B400FF9FE8 /* RNRoom.m */; };
 		741F01CB184290B400FF9FE8 /* RNSurface.m in Sources */ = {isa = PBXBuildFile; fileRef = 741F01AD184290B400FF9FE8 /* RNSurface.m */; };
@@ -49,13 +48,12 @@
 		741F01CE184290B400FF9FE8 /* _RNCeiling.m in Sources */ = {isa = PBXBuildFile; fileRef = 741F01B4184290B400FF9FE8 /* _RNCeiling.m */; };
 		741F01CF184290B400FF9FE8 /* _RNDoor.m in Sources */ = {isa = PBXBuildFile; fileRef = 741F01B6184290B400FF9FE8 /* _RNDoor.m */; };
 		741F01D0184290B400FF9FE8 /* _RNGround.m in Sources */ = {isa = PBXBuildFile; fileRef = 741F01B8184290B400FF9FE8 /* _RNGround.m */; };
-		741F01D1184290B400FF9FE8 /* _RNProject.m in Sources */ = {isa = PBXBuildFile; fileRef = 741F01BA184290B400FF9FE8 /* _RNProject.m */; };
 		741F01D2184290B400FF9FE8 /* _RNRadiator.m in Sources */ = {isa = PBXBuildFile; fileRef = 741F01BC184290B400FF9FE8 /* _RNRadiator.m */; };
 		741F01D3184290B400FF9FE8 /* _RNRoom.m in Sources */ = {isa = PBXBuildFile; fileRef = 741F01BE184290B400FF9FE8 /* _RNRoom.m */; };
 		741F01D4184290B400FF9FE8 /* _RNSurface.m in Sources */ = {isa = PBXBuildFile; fileRef = 741F01C0184290B400FF9FE8 /* _RNSurface.m */; };
 		741F01D5184290B400FF9FE8 /* _RNWall.m in Sources */ = {isa = PBXBuildFile; fileRef = 741F01C2184290B400FF9FE8 /* _RNWall.m */; };
 		741F01D6184290B400FF9FE8 /* _RNWindow.m in Sources */ = {isa = PBXBuildFile; fileRef = 741F01C4184290B400FF9FE8 /* _RNWindow.m */; };
-		741F01DF18433B6900FF9FE8 /* RNProjectInfoViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 741F01DE18433B6900FF9FE8 /* RNProjectInfoViewController.m */; };
+		741F01DF18433B6900FF9FE8 /* RNSiteEditViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 741F01DE18433B6900FF9FE8 /* RNSiteEditViewController.m */; };
 		741F01F61844E9F200FF9FE8 /* RNStore.m in Sources */ = {isa = PBXBuildFile; fileRef = 741F01F51844E9F200FF9FE8 /* RNStore.m */; };
 		7447A3AE1850CFC400417705 /* RNSplitViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 7447A3AD1850CFC400417705 /* RNSplitViewController.m */; };
 		7447A3B9185194F200417705 /* RNSplitContentView.m in Sources */ = {isa = PBXBuildFile; fileRef = 7447A3B8185194F200417705 /* RNSplitContentView.m */; };
@@ -74,9 +72,15 @@
 		744ABAE5183FDF32009A6366 /* InfoPlist.strings in Resources */ = {isa = PBXBuildFile; fileRef = 744ABAE3183FDF32009A6366 /* InfoPlist.strings */; };
 		744ABAE7183FDF32009A6366 /* RayNovTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 744ABAE6183FDF32009A6366 /* RayNovTests.m */; };
 		744ABB0A183FE264009A6366 /* ProjectModel.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = 744ABB08183FE264009A6366 /* ProjectModel.xcdatamodeld */; };
-		74A8D0BF184A89E90025D701 /* RNStore+RNProject.m in Sources */ = {isa = PBXBuildFile; fileRef = 74A8D0BE184A89E90025D701 /* RNStore+RNProject.m */; };
+		74A8D0BF184A89E90025D701 /* RNStore+RNSite.m in Sources */ = {isa = PBXBuildFile; fileRef = 74A8D0BE184A89E90025D701 /* RNStore+RNSite.m */; };
 		74A8D0C2184A8B010025D701 /* RNStore+RNClient.m in Sources */ = {isa = PBXBuildFile; fileRef = 74A8D0C1184A8B010025D701 /* RNStore+RNClient.m */; };
 		74A8D0D1184CDE560025D701 /* RNClientDetailsViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 74A8D0D0184CDE560025D701 /* RNClientDetailsViewController.m */; };
+		74AB23AA1858AB7100977C0F /* RNSiteSplitViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 74AB23A91858AB7100977C0F /* RNSiteSplitViewController.m */; };
+		74AB23AD1858ABC200977C0F /* RNSiteTableViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 74AB23AC1858ABC200977C0F /* RNSiteTableViewController.m */; };
+		74AB23B01858AD1300977C0F /* RNSiteTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 74AB23AF1858AD1300977C0F /* RNSiteTableViewCell.m */; };
+		74AB23B31858BCF900977C0F /* RNSiteDetailsViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 74AB23B21858BCF900977C0F /* RNSiteDetailsViewController.m */; };
+		74AB23BC1859E94E00977C0F /* RNSite.m in Sources */ = {isa = PBXBuildFile; fileRef = 74AB23BB1859E94E00977C0F /* RNSite.m */; };
+		74AB23BF1859E95C00977C0F /* _RNSite.m in Sources */ = {isa = PBXBuildFile; fileRef = 74AB23BE1859E95C00977C0F /* _RNSite.m */; };
 		74C773851846880B00074061 /* RNCollectionViewProjectCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 74C773841846880B00074061 /* RNCollectionViewProjectCell.m */; };
 		74D3E1991847D4720055BEEA /* reveal-icon.png in Resources */ = {isa = PBXBuildFile; fileRef = 74D3E1971847D4720055BEEA /* reveal-icon.png */; };
 		74D3E19A1847D4720055BEEA /* reveal-icon@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 74D3E1981847D4720055BEEA /* reveal-icon@2x.png */; };
@@ -143,8 +147,6 @@
 		741F01A3184290B400FF9FE8 /* RNDoor.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = RNDoor.m; sourceTree = "<group>"; };
 		741F01A4184290B400FF9FE8 /* RNGround.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = RNGround.h; sourceTree = "<group>"; };
 		741F01A5184290B400FF9FE8 /* RNGround.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = RNGround.m; sourceTree = "<group>"; };
-		741F01A6184290B400FF9FE8 /* RNProject.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = RNProject.h; sourceTree = "<group>"; };
-		741F01A7184290B400FF9FE8 /* RNProject.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = RNProject.m; sourceTree = "<group>"; };
 		741F01A8184290B400FF9FE8 /* RNRadiator.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = RNRadiator.h; sourceTree = "<group>"; };
 		741F01A9184290B400FF9FE8 /* RNRadiator.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = RNRadiator.m; sourceTree = "<group>"; };
 		741F01AA184290B400FF9FE8 /* RNRoom.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = RNRoom.h; sourceTree = "<group>"; };
@@ -161,8 +163,6 @@
 		741F01B6184290B400FF9FE8 /* _RNDoor.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = _RNDoor.m; sourceTree = "<group>"; };
 		741F01B7184290B400FF9FE8 /* _RNGround.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = _RNGround.h; sourceTree = "<group>"; };
 		741F01B8184290B400FF9FE8 /* _RNGround.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = _RNGround.m; sourceTree = "<group>"; };
-		741F01B9184290B400FF9FE8 /* _RNProject.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = _RNProject.h; sourceTree = "<group>"; };
-		741F01BA184290B400FF9FE8 /* _RNProject.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = _RNProject.m; sourceTree = "<group>"; };
 		741F01BB184290B400FF9FE8 /* _RNRadiator.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = _RNRadiator.h; sourceTree = "<group>"; };
 		741F01BC184290B400FF9FE8 /* _RNRadiator.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = _RNRadiator.m; sourceTree = "<group>"; };
 		741F01BD184290B400FF9FE8 /* _RNRoom.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = _RNRoom.h; sourceTree = "<group>"; };
@@ -173,8 +173,8 @@
 		741F01C2184290B400FF9FE8 /* _RNWall.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = _RNWall.m; sourceTree = "<group>"; };
 		741F01C3184290B400FF9FE8 /* _RNWindow.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = _RNWindow.h; sourceTree = "<group>"; };
 		741F01C4184290B400FF9FE8 /* _RNWindow.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = _RNWindow.m; sourceTree = "<group>"; };
-		741F01DD18433B6900FF9FE8 /* RNProjectInfoViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = RNProjectInfoViewController.h; path = RayNov/RNProjectInfoViewController.h; sourceTree = SOURCE_ROOT; };
-		741F01DE18433B6900FF9FE8 /* RNProjectInfoViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = RNProjectInfoViewController.m; path = RayNov/RNProjectInfoViewController.m; sourceTree = SOURCE_ROOT; };
+		741F01DD18433B6900FF9FE8 /* RNSiteEditViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = RNSiteEditViewController.h; path = RayNov/RNSiteEditViewController.h; sourceTree = SOURCE_ROOT; };
+		741F01DE18433B6900FF9FE8 /* RNSiteEditViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = RNSiteEditViewController.m; path = RayNov/RNSiteEditViewController.m; sourceTree = SOURCE_ROOT; };
 		741F01ED1844DAA500FF9FE8 /* common.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = common.h; sourceTree = "<group>"; };
 		741F01F41844E9F200FF9FE8 /* RNStore.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = RNStore.h; sourceTree = "<group>"; };
 		741F01F51844E9F200FF9FE8 /* RNStore.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = RNStore.m; sourceTree = "<group>"; };
@@ -203,12 +203,24 @@
 		744ABAE6183FDF32009A6366 /* RayNovTests.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = RayNovTests.m; sourceTree = "<group>"; };
 		744ABB09183FE264009A6366 /* ProjectModel.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = ProjectModel.xcdatamodel; sourceTree = "<group>"; };
 		7482D4554673424F87CE7DF8 /* Pods.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = Pods.xcconfig; path = Pods/Pods.xcconfig; sourceTree = "<group>"; };
-		74A8D0BD184A89E90025D701 /* RNStore+RNProject.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "RNStore+RNProject.h"; sourceTree = "<group>"; };
-		74A8D0BE184A89E90025D701 /* RNStore+RNProject.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "RNStore+RNProject.m"; sourceTree = "<group>"; };
+		74A8D0BD184A89E90025D701 /* RNStore+RNSite.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "RNStore+RNSite.h"; sourceTree = "<group>"; };
+		74A8D0BE184A89E90025D701 /* RNStore+RNSite.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "RNStore+RNSite.m"; sourceTree = "<group>"; };
 		74A8D0C0184A8B010025D701 /* RNStore+RNClient.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "RNStore+RNClient.h"; sourceTree = "<group>"; };
 		74A8D0C1184A8B010025D701 /* RNStore+RNClient.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "RNStore+RNClient.m"; sourceTree = "<group>"; };
 		74A8D0CF184CDE560025D701 /* RNClientDetailsViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = RNClientDetailsViewController.h; sourceTree = "<group>"; };
 		74A8D0D0184CDE560025D701 /* RNClientDetailsViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = RNClientDetailsViewController.m; sourceTree = "<group>"; };
+		74AB23A81858AB7100977C0F /* RNSiteSplitViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = RNSiteSplitViewController.h; sourceTree = "<group>"; };
+		74AB23A91858AB7100977C0F /* RNSiteSplitViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = RNSiteSplitViewController.m; sourceTree = "<group>"; };
+		74AB23AB1858ABC200977C0F /* RNSiteTableViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = RNSiteTableViewController.h; sourceTree = "<group>"; };
+		74AB23AC1858ABC200977C0F /* RNSiteTableViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = RNSiteTableViewController.m; sourceTree = "<group>"; };
+		74AB23AE1858AD1300977C0F /* RNSiteTableViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = RNSiteTableViewCell.h; sourceTree = "<group>"; };
+		74AB23AF1858AD1300977C0F /* RNSiteTableViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = RNSiteTableViewCell.m; sourceTree = "<group>"; };
+		74AB23B11858BCF900977C0F /* RNSiteDetailsViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = RNSiteDetailsViewController.h; sourceTree = "<group>"; };
+		74AB23B21858BCF900977C0F /* RNSiteDetailsViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = RNSiteDetailsViewController.m; sourceTree = "<group>"; };
+		74AB23BA1859E94E00977C0F /* RNSite.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = RNSite.h; sourceTree = "<group>"; };
+		74AB23BB1859E94E00977C0F /* RNSite.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = RNSite.m; sourceTree = "<group>"; };
+		74AB23BD1859E95C00977C0F /* _RNSite.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = _RNSite.h; sourceTree = "<group>"; };
+		74AB23BE1859E95C00977C0F /* _RNSite.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = _RNSite.m; sourceTree = "<group>"; };
 		74C773831846880B00074061 /* RNCollectionViewProjectCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = RNCollectionViewProjectCell.h; sourceTree = "<group>"; };
 		74C773841846880B00074061 /* RNCollectionViewProjectCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = RNCollectionViewProjectCell.m; sourceTree = "<group>"; };
 		74D3E1971847D4720055BEEA /* reveal-icon.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "reveal-icon.png"; path = "Resources/reveal-icon.png"; sourceTree = "<group>"; };
@@ -309,6 +321,8 @@
 		741F019F184290B400FF9FE8 /* Human */ = {
 			isa = PBXGroup;
 			children = (
+				74AB23BA1859E94E00977C0F /* RNSite.h */,
+				74AB23BB1859E94E00977C0F /* RNSite.m */,
 				741360CB1849D0BA00B7207A /* RNAddress.h */,
 				741360CC1849D0BA00B7207A /* RNAddress.m */,
 				741360C81849C0E800B7207A /* RNClient.h */,
@@ -319,8 +333,6 @@
 				741F01A3184290B400FF9FE8 /* RNDoor.m */,
 				741F01A4184290B400FF9FE8 /* RNGround.h */,
 				741F01A5184290B400FF9FE8 /* RNGround.m */,
-				741F01A6184290B400FF9FE8 /* RNProject.h */,
-				741F01A7184290B400FF9FE8 /* RNProject.m */,
 				741F01A8184290B400FF9FE8 /* RNRadiator.h */,
 				741F01A9184290B400FF9FE8 /* RNRadiator.m */,
 				741F01AA184290B400FF9FE8 /* RNRoom.h */,
@@ -338,6 +350,8 @@
 		741F01B2184290B400FF9FE8 /* Machine */ = {
 			isa = PBXGroup;
 			children = (
+				74AB23BD1859E95C00977C0F /* _RNSite.h */,
+				74AB23BE1859E95C00977C0F /* _RNSite.m */,
 				741360CE1849D0C600B7207A /* _RNAddress.h */,
 				741360CF1849D0C600B7207A /* _RNAddress.m */,
 				741360C51849C0C000B7207A /* _RNClient.h */,
@@ -348,8 +362,6 @@
 				741F01B6184290B400FF9FE8 /* _RNDoor.m */,
 				741F01B7184290B400FF9FE8 /* _RNGround.h */,
 				741F01B8184290B400FF9FE8 /* _RNGround.m */,
-				741F01B9184290B400FF9FE8 /* _RNProject.h */,
-				741F01BA184290B400FF9FE8 /* _RNProject.m */,
 				741F01BB184290B400FF9FE8 /* _RNRadiator.h */,
 				741F01BC184290B400FF9FE8 /* _RNRadiator.m */,
 				741F01BD184290B400FF9FE8 /* _RNRoom.h */,
@@ -377,8 +389,8 @@
 			children = (
 				741F01F41844E9F200FF9FE8 /* RNStore.h */,
 				741F01F51844E9F200FF9FE8 /* RNStore.m */,
-				74A8D0BD184A89E90025D701 /* RNStore+RNProject.h */,
-				74A8D0BE184A89E90025D701 /* RNStore+RNProject.m */,
+				74A8D0BD184A89E90025D701 /* RNStore+RNSite.h */,
+				74A8D0BE184A89E90025D701 /* RNStore+RNSite.m */,
 				74A8D0C0184A8B010025D701 /* RNStore+RNClient.h */,
 				74A8D0C1184A8B010025D701 /* RNStore+RNClient.m */,
 			);
@@ -490,15 +502,32 @@
 			name = "Supporting Files";
 			sourceTree = "<group>";
 		};
+		74790B6A18576D57004C40E9 /* Site */ = {
+			isa = PBXGroup;
+			children = (
+				74AB23A81858AB7100977C0F /* RNSiteSplitViewController.h */,
+				74AB23A91858AB7100977C0F /* RNSiteSplitViewController.m */,
+				74AB23AB1858ABC200977C0F /* RNSiteTableViewController.h */,
+				74AB23AC1858ABC200977C0F /* RNSiteTableViewController.m */,
+				74AB23AE1858AD1300977C0F /* RNSiteTableViewCell.h */,
+				74AB23AF1858AD1300977C0F /* RNSiteTableViewCell.m */,
+				74AB23B11858BCF900977C0F /* RNSiteDetailsViewController.h */,
+				74AB23B21858BCF900977C0F /* RNSiteDetailsViewController.m */,
+				741F01DD18433B6900FF9FE8 /* RNSiteEditViewController.h */,
+				741F01DE18433B6900FF9FE8 /* RNSiteEditViewController.m */,
+			);
+			name = Site;
+			sourceTree = "<group>";
+		};
 		74C77380184682AF00074061 /* GUI */ = {
 			isa = PBXGroup;
 			children = (
 				744ABACD183FDF32009A6366 /* Main.storyboard */,
 				741360621848CE1800B7207A /* Generic */,
-				741360BB184924B700B7207A /* Menu */,
 				74C77381184682C200074061 /* Main */,
+				741360BB184924B700B7207A /* Menu */,
 				741360D11849D0E300B7207A /* Client */,
-				74C77382184682CF00074061 /* ProjectInfo */,
+				74790B6A18576D57004C40E9 /* Site */,
 				74D5AD83184694A4004AADBF /* EditProject */,
 			);
 			name = GUI;
@@ -515,15 +544,6 @@
 				74D3E19C1847DDA50055BEEA /* RNProjectsLayout.m */,
 			);
 			name = Main;
-			sourceTree = "<group>";
-		};
-		74C77382184682CF00074061 /* ProjectInfo */ = {
-			isa = PBXGroup;
-			children = (
-				741F01DD18433B6900FF9FE8 /* RNProjectInfoViewController.h */,
-				741F01DE18433B6900FF9FE8 /* RNProjectInfoViewController.m */,
-			);
-			name = ProjectInfo;
 			sourceTree = "<group>";
 		};
 		74D3E1961847D3FF0055BEEA /* Resources */ = {
@@ -715,7 +735,7 @@
 				744ABACC183FDF32009A6366 /* RNAppDelegate.m in Sources */,
 				74A8D0C2184A8B010025D701 /* RNStore+RNClient.m in Sources */,
 				741F01C5184290B400FF9FE8 /* RNCeiling.m in Sources */,
-				74A8D0BF184A89E90025D701 /* RNStore+RNProject.m in Sources */,
+				74A8D0BF184A89E90025D701 /* RNStore+RNSite.m in Sources */,
 				741360D41849D10800B7207A /* RNClientTableViewController.m in Sources */,
 				741360BE184924E200B7207A /* RNMenuViewController.m in Sources */,
 				741F01D0184290B400FF9FE8 /* _RNGround.m in Sources */,
@@ -724,6 +744,7 @@
 				7414A6C01853AD80009ABD62 /* RNTableViewController.m in Sources */,
 				741360D01849D0C600B7207A /* _RNAddress.m in Sources */,
 				7413606B1848CEF500B7207A /* RNGridLayout.m in Sources */,
+				74AB23B31858BCF900977C0F /* RNSiteDetailsViewController.m in Sources */,
 				74D3E19D1847DDA50055BEEA /* RNProjectsLayout.m in Sources */,
 				7447A3AE1850CFC400417705 /* RNSplitViewController.m in Sources */,
 				741F01CA184290B400FF9FE8 /* RNRoom.m in Sources */,
@@ -739,20 +760,23 @@
 				741F01C9184290B400FF9FE8 /* RNRadiator.m in Sources */,
 				740C98FF185275A800235B11 /* RNClientEditViewController.m in Sources */,
 				741360C71849C0C000B7207A /* _RNClient.m in Sources */,
-				741F01D1184290B400FF9FE8 /* _RNProject.m in Sources */,
 				741F01CB184290B400FF9FE8 /* RNSurface.m in Sources */,
 				741F01D6184290B400FF9FE8 /* _RNWindow.m in Sources */,
 				74A8D0D1184CDE560025D701 /* RNClientDetailsViewController.m in Sources */,
 				744ABAD2183FDF32009A6366 /* RNProjectsViewController.m in Sources */,
 				741F01F61844E9F200FF9FE8 /* RNStore.m in Sources */,
 				741360681848CE6400B7207A /* RNGridItemCell.m in Sources */,
-				741F01C8184290B400FF9FE8 /* RNProject.m in Sources */,
 				741F01CF184290B400FF9FE8 /* _RNDoor.m in Sources */,
 				741F01C6184290B400FF9FE8 /* RNDoor.m in Sources */,
 				741F01CE184290B400FF9FE8 /* _RNCeiling.m in Sources */,
-				741F01DF18433B6900FF9FE8 /* RNProjectInfoViewController.m in Sources */,
+				74AB23BF1859E95C00977C0F /* _RNSite.m in Sources */,
+				74AB23BC1859E94E00977C0F /* RNSite.m in Sources */,
+				741F01DF18433B6900FF9FE8 /* RNSiteEditViewController.m in Sources */,
 				741360651848CE4400B7207A /* RNGridViewController.m in Sources */,
+				74AB23AD1858ABC200977C0F /* RNSiteTableViewController.m in Sources */,
+				74AB23B01858AD1300977C0F /* RNSiteTableViewCell.m in Sources */,
 				74E2C589184E767C00AF0668 /* RNClientsSplitViewController.m in Sources */,
+				74AB23AA1858AB7100977C0F /* RNSiteSplitViewController.m in Sources */,
 				741F01C7184290B400FF9FE8 /* RNGround.m in Sources */,
 				741F01CC184290B400FF9FE8 /* RNWall.m in Sources */,
 				7413606E1848D84600B7207A /* RNGridLayoutAttributes.m in Sources */,

@@ -4,7 +4,7 @@
         <attribute name="country" optional="YES" attributeType="String" syncable="YES"/>
         <attribute name="postalAddress1" optional="YES" attributeType="String" syncable="YES"/>
         <attribute name="postalAddress2" optional="YES" attributeType="String" syncable="YES"/>
-        <attribute name="postalCode" optional="YES" attributeType="Integer 16" defaultValueString="0" syncable="YES"/>
+        <attribute name="postalCode" optional="YES" attributeType="String" syncable="YES"/>
         <attribute name="town" optional="YES" attributeType="String" syncable="YES"/>
     </entity>
     <entity name="RNCeiling" representedClassName="RNCeiling" parentEntity="RNSurface" syncable="YES">
@@ -25,14 +25,6 @@
     <entity name="RNGround" representedClassName="RNGround" parentEntity="RNSurface" syncable="YES">
         <relationship name="room" optional="YES" maxCount="1" deletionRule="Nullify" destinationEntity="RNRoom" inverseName="ground" inverseEntity="RNRoom" syncable="YES"/>
     </entity>
-    <entity name="RNProject" representedClassName="RNProject" syncable="YES">
-        <attribute name="creationDate" optional="YES" attributeType="Date" syncable="YES"/>
-        <attribute name="siteName" optional="YES" attributeType="String" syncable="YES"/>
-        <attribute name="siteReference" optional="YES" attributeType="String" syncable="YES"/>
-        <relationship name="address" optional="YES" maxCount="1" deletionRule="Nullify" destinationEntity="RNAddress" syncable="YES"/>
-        <relationship name="client" optional="YES" maxCount="1" deletionRule="Nullify" destinationEntity="RNClient" syncable="YES"/>
-        <relationship name="rooms" optional="YES" toMany="YES" deletionRule="Nullify" destinationEntity="RNRoom" inverseName="project" inverseEntity="RNRoom" syncable="YES"/>
-    </entity>
     <entity name="RNRadiator" representedClassName="RNRadiator" parentEntity="RNSurface" syncable="YES">
         <relationship name="wall" optional="YES" maxCount="1" deletionRule="Nullify" destinationEntity="RNWall" inverseName="radiators" inverseEntity="RNWall" syncable="YES"/>
     </entity>
@@ -40,8 +32,16 @@
         <attribute name="dummy" optional="YES" attributeType="Boolean" syncable="YES"/>
         <relationship name="ceiling" optional="YES" maxCount="1" deletionRule="Nullify" destinationEntity="RNCeiling" inverseName="room" inverseEntity="RNCeiling" syncable="YES"/>
         <relationship name="ground" optional="YES" maxCount="1" deletionRule="Nullify" destinationEntity="RNGround" inverseName="room" inverseEntity="RNGround" syncable="YES"/>
-        <relationship name="project" optional="YES" maxCount="1" deletionRule="Nullify" destinationEntity="RNProject" inverseName="rooms" inverseEntity="RNProject" syncable="YES"/>
+        <relationship name="project" optional="YES" maxCount="1" deletionRule="Nullify" destinationEntity="RNSite" inverseName="rooms" inverseEntity="RNSite" syncable="YES"/>
         <relationship name="walls" optional="YES" toMany="YES" deletionRule="Nullify" destinationEntity="RNWall" inverseName="room" inverseEntity="RNWall" syncable="YES"/>
+    </entity>
+    <entity name="RNSite" representedClassName="RNSite" syncable="YES">
+        <attribute name="creationDate" optional="YES" attributeType="Date" syncable="YES"/>
+        <attribute name="siteName" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="siteReference" optional="YES" attributeType="String" syncable="YES"/>
+        <relationship name="address" optional="YES" maxCount="1" deletionRule="Nullify" destinationEntity="RNAddress" syncable="YES"/>
+        <relationship name="client" optional="YES" maxCount="1" deletionRule="Nullify" destinationEntity="RNClient" syncable="YES"/>
+        <relationship name="rooms" optional="YES" toMany="YES" deletionRule="Nullify" destinationEntity="RNRoom" inverseName="project" inverseEntity="RNRoom" syncable="YES"/>
     </entity>
     <entity name="RNSurface" representedClassName="RNSurface" syncable="YES">
         <attribute name="height" optional="YES" attributeType="Double" defaultValueString="0.0" syncable="YES"/>
@@ -59,14 +59,14 @@
     <elements>
         <element name="RNAddress" positionX="-4727" positionY="-5040" width="128" height="118"/>
         <element name="RNCeiling" positionX="-4583" positionY="-4666" width="128" height="58"/>
+        <element name="RNClient" positionX="-4572" positionY="-4896" width="128" height="148"/>
         <element name="RNDoor" positionX="-4356" positionY="-4491" width="128" height="58"/>
         <element name="RNGround" positionX="-4151" positionY="-4666" width="128" height="58"/>
+        <element name="RNSite" positionX="-4367" positionY="-5110" width="128" height="133"/>
         <element name="RNRadiator" positionX="-4554" positionY="-4486" width="128" height="58"/>
         <element name="RNRoom" positionX="-4349" positionY="-4837" width="128" height="118"/>
         <element name="RNSurface" positionX="-4356" positionY="-4347" width="128" height="73"/>
         <element name="RNWall" positionX="-4347" positionY="-4666" width="128" height="103"/>
         <element name="RNWindow" positionX="-4149" positionY="-4486" width="128" height="58"/>
-        <element name="RNProject" positionX="-4367" positionY="-5110" width="128" height="133"/>
-        <element name="RNClient" positionX="-4572" positionY="-4896" width="128" height="148"/>
     </elements>
 </model>

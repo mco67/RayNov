@@ -1,5 +1,5 @@
 //
-//  RNStore+RNProject.h
+//  RNStore+RNSite.h
 //  RayNov
 //
 //  Created by Mathieu Cordebard on 30/11/2013.
@@ -7,18 +7,20 @@
 //
 
 #import "RNStore.h"
+#import "RNSite.h"
 
 #define ERROR_DUPLICATE_SITE_NAME 1
 #define ERROR_DUPLICATE_SITE_REFERENCE 2
 
-@interface RNStore (RNProject)
+@interface RNStore (RNSite)
 
-- (RNProject*) createProjectWithSiteName:(NSString*)siteName
+- (RNSite*) createSiteWithSiteName:(NSString*)siteName
                         andSiteReference:(NSString*)siteRef
                                 andError:(NSError**)error;
 
-- (void) deleteProject:(RNProject*)project;
+- (void) deleteSite:(RNSite*)project;
 
 - (NSFetchedResultsController*) createFetchedResultControllerWithDelegate:(id<NSFetchedResultsControllerDelegate>)delegate;
+- (NSFetchedResultsController*) getSiteFetchedResultsCtrlWithSearch:(NSString*)searchString;
 
 @end

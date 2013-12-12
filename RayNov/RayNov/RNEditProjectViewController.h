@@ -14,6 +14,6 @@
 
 @interface RNEditProjectViewController : RNGridViewController
 
-@property (strong, nonatomic) RNProject* project;
+@property (strong, nonatomic) RNSite* site;
 
 @end

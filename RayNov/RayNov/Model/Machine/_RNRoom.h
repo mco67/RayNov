@@ -20,7 +20,7 @@ extern const struct RNRoomFetchedProperties {
 
 @class RNCeiling;
 @class RNGround;
-@class RNProject;
+@class RNSite;
 @class RNWall;
 
 
@@ -66,7 +66,7 @@ extern const struct RNRoomFetchedProperties {
 
 
 
-@property (nonatomic, strong) RNProject *project;
+@property (nonatomic, strong) RNSite *project;
 
 //- (BOOL)validateProject:(id*)value_ error:(NSError**)error_;
 
@@ -115,8 +115,8 @@ extern const struct RNRoomFetchedProperties {
 
 
 
-- (RNProject*)primitiveProject;
-- (void)setPrimitiveProject:(RNProject*)value;
+- (RNSite*)primitiveProject;
+- (void)setPrimitiveProject:(RNSite*)value;
 
 
 

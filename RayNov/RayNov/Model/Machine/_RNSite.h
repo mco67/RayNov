@@ -1,23 +1,23 @@
 // DO NOT EDIT. This file is machine-generated and constantly overwritten.
-// Make changes to RNProject.h instead.
+// Make changes to RNSite.h instead.
 
 #import <CoreData/CoreData.h>
 
 
-extern const struct RNProjectAttributes {
+extern const struct RNSiteAttributes {
 	__unsafe_unretained NSString *creationDate;
 	__unsafe_unretained NSString *siteName;
 	__unsafe_unretained NSString *siteReference;
-} RNProjectAttributes;
+} RNSiteAttributes;
 
-extern const struct RNProjectRelationships {
+extern const struct RNSiteRelationships {
 	__unsafe_unretained NSString *address;
 	__unsafe_unretained NSString *client;
 	__unsafe_unretained NSString *rooms;
-} RNProjectRelationships;
+} RNSiteRelationships;
 
-extern const struct RNProjectFetchedProperties {
-} RNProjectFetchedProperties;
+extern const struct RNSiteFetchedProperties {
+} RNSiteFetchedProperties;
 
 @class RNAddress;
 @class RNClient;
@@ -27,14 +27,14 @@ extern const struct RNProjectFetchedProperties {
 
 
 
-@interface RNProjectID : NSManagedObjectID {}
+@interface RNSiteID : NSManagedObjectID {}
 @end
 
-@interface _RNProject : NSManagedObject {}
+@interface _RNSite : NSManagedObject {}
 + (id)insertInManagedObjectContext:(NSManagedObjectContext*)moc_;
 + (NSString*)entityName;
 + (NSEntityDescription*)entityInManagedObjectContext:(NSManagedObjectContext*)moc_;
-- (RNProjectID*)objectID;
+- (RNSiteID*)objectID;
 
 
 
@@ -94,7 +94,7 @@ extern const struct RNProjectFetchedProperties {
 
 @end
 
-@interface _RNProject (CoreDataGeneratedAccessors)
+@interface _RNSite (CoreDataGeneratedAccessors)
 
 - (void)addRooms:(NSSet*)value_;
 - (void)removeRooms:(NSSet*)value_;
@@ -103,7 +103,7 @@ extern const struct RNProjectFetchedProperties {
 
 @end
 
-@interface _RNProject (CoreDataGeneratedPrimitiveAccessors)
+@interface _RNSite (CoreDataGeneratedPrimitiveAccessors)
 
 
 - (NSDate*)primitiveCreationDate;

@@ -1,44 +1,44 @@
 // DO NOT EDIT. This file is machine-generated and constantly overwritten.
-// Make changes to RNProject.m instead.
+// Make changes to RNSite.m instead.
 
-#import "_RNProject.h"
+#import "_RNSite.h"
 
-const struct RNProjectAttributes RNProjectAttributes = {
+const struct RNSiteAttributes RNSiteAttributes = {
 	.creationDate = @"creationDate",
 	.siteName = @"siteName",
 	.siteReference = @"siteReference",
 };
 
-const struct RNProjectRelationships RNProjectRelationships = {
+const struct RNSiteRelationships RNSiteRelationships = {
 	.address = @"address",
 	.client = @"client",
 	.rooms = @"rooms",
 };
 
-const struct RNProjectFetchedProperties RNProjectFetchedProperties = {
+const struct RNSiteFetchedProperties RNSiteFetchedProperties = {
 };
 
-@implementation RNProjectID
+@implementation RNSiteID
 @end
 
-@implementation _RNProject
+@implementation _RNSite
 
 + (id)insertInManagedObjectContext:(NSManagedObjectContext*)moc_ {
 	NSParameterAssert(moc_);
-	return [NSEntityDescription insertNewObjectForEntityForName:@"RNProject" inManagedObjectContext:moc_];
+	return [NSEntityDescription insertNewObjectForEntityForName:@"RNSite" inManagedObjectContext:moc_];
 }
 
 + (NSString*)entityName {
-	return @"RNProject";
+	return @"RNSite";
 }
 
 + (NSEntityDescription*)entityInManagedObjectContext:(NSManagedObjectContext*)moc_ {
 	NSParameterAssert(moc_);
-	return [NSEntityDescription entityForName:@"RNProject" inManagedObjectContext:moc_];
+	return [NSEntityDescription entityForName:@"RNSite" inManagedObjectContext:moc_];
 }
 
-- (RNProjectID*)objectID {
-	return (RNProjectID*)[super objectID];
+- (RNSiteID*)objectID {
+	return (RNSiteID*)[super objectID];
 }
 
 + (NSSet*)keyPathsForValuesAffectingValueForKey:(NSString*)key {

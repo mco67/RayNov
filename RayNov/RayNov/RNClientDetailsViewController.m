@@ -60,7 +60,7 @@
         self.clientAddress1.text = self.client.address.postalAddress1;
         self.clientAddress2.text = self.client.address.postalAddress2;
         self.clientTown.text = self.client.address.town;
-        self.clientPostalCode.text = [self.client.address.postalCode stringValue];
+        self.clientPostalCode.text = self.client.address.postalCode;
         self.clientCountry.text = self.client.address.country;
         
         // Update error label and buttons

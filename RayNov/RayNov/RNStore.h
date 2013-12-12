@@ -7,7 +7,7 @@
 //
 
 #import <Foundation/Foundation.h>
-#import "RNProject.h"
+#import "RNSite.h"
 
 @interface RNStore : NSObject
 
@@ -18,5 +18,5 @@
 + (RNStore*) instance;
 
 - (void) saveContext;
-- (NSFetchedResultsController*) createRoomsFetchedResultControllerForProject:(RNProject*)project andDelegate:(id<NSFetchedResultsControllerDelegate>)delegate;
+- (NSFetchedResultsController*) createRoomsFetchedResultControllerForSite:(RNSite*)site andDelegate:(id<NSFetchedResultsControllerDelegate>)delegate;
 @end

@@ -69,7 +69,7 @@
         self.clientAddress1.text = self.client.address.postalAddress1;
         self.clientAddress2.text = self.client.address.postalAddress2;
         self.clientTown.text = self.client.address.town;
-        self.clientPostalCode.text = [self.client.address.postalCode stringValue];
+        self.clientPostalCode.text = self.client.address.postalCode;
         self.clientCountry.text = self.client.address.country;
         
         // Update error label and buttons
@@ -108,7 +108,7 @@
     clientAddress.postalAddress2 = self.clientAddress2.text;
     clientAddress.town = self.clientTown.text;
     clientAddress.country = self.clientCountry.text;
-    clientAddress.postalCode = [NSNumber numberWithInt:[self.clientPostalCode.text intValue]];
+    clientAddress.postalCode = self.clientPostalCode.text;
     
     // Store the project entity
     [[RNStore instance] saveContext];

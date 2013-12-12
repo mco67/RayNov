@@ -9,7 +9,7 @@
 #import "RNEditProjectViewController.h"
 #import "RNRoomsLayout.h"
 #import "RNRoomItem.h"
-#import "RNProjectInfoViewController.h"
+#import "RNSiteEditViewController.h"
 
 @interface RNEditProjectViewController () <NSFetchedResultsControllerDelegate>
 
@@ -38,7 +38,7 @@
 
 - (void) viewWillAppear:(BOOL)animated
 {
-    self.navigationItem.title = self.project.siteName;
+    self.navigationItem.title = self.site.siteName;
 }
 
 #pragma mark - UICollectionViewDataSource implementation
@@ -46,7 +46,7 @@
 - (UICollectionViewCell*)collectionView:(UICollectionView*)collectionView cellForItemAtIndexPath:(NSIndexPath*)indexPath
 {
     RNRoomItem* cell = (RNRoomItem*)[collectionView dequeueReusableCellWithReuseIdentifier:@"RoomCell" forIndexPath:indexPath];
-    RNProject* project = [self.fetchedResultsController objectAtIndexPath:indexPath];
+    RNSite* site = [self.fetchedResultsController objectAtIndexPath:indexPath];
     [cell.deleteButton addTarget:self action:@selector(delete:) forControlEvents:UIControlEventTouchUpInside];
     return cell;
 }
@@ -66,8 +66,8 @@
 {
     if ([segue.identifier isEqualToString:@"ProjectInfo"]) {
         UINavigationController* navigationController = segue.destinationViewController;
-        RNProjectInfoViewController* projectInfoViewController = (RNProjectInfoViewController*)[navigationController viewControllers][0];
-        projectInfoViewController.project = self.project;
+        RNSiteEditViewController* siteInfoViewController = (RNSiteEditViewController*)[navigationController viewControllers][0];
+        siteInfoViewController.site = self.site;
     }
 }
 

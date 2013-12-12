@@ -7,10 +7,10 @@
 //
 
 #import "RNProjectsViewController.h"
-#import "RNProjectInfoViewController.h"
+#import "RNSiteEditViewController.h"
 #import "RNEditProjectViewController.h"
-#import "RNStore+RNProject.h"
-#import "RNProject.h"
+#import "RNStore+RNSite.h"
+#import "RNSite.h"
 #import "RNProjectsLayout.h"
 #import "RNCollectionViewProjectCell.h"
 #import "RNGridViewController.h"
@@ -64,27 +64,27 @@
 {
     if ([segue.identifier isEqualToString:@"EditProject"]) {
         UINavigationController* navigationController = segue.destinationViewController;
-        RNEditProjectViewController* editProjectViewController = [navigationController viewControllers][0];
-        editProjectViewController.project = (RNProject*)sender;
+        RNEditProjectViewController* editSiteViewController = [navigationController viewControllers][0];
+        //editSiteViewController.site = (RNSite*)self.site;
     }
 }
 
 
 #pragma mark - RNCreateprojectViewControllerDelegate implementation
 
-- (void) createProjectViewControllerDidCancel:(RNProjectInfoViewController*)controller
+- (void) createProjectViewControllerDidCancel:(RNSiteEditViewController*)controller
 {
     [self dismissViewControllerAnimated:YES completion:nil];
 }
 
-- (void) createProjectViewControllerDidApply:(RNProjectInfoViewController*)controller
+- (void) createProjectViewControllerDidApply:(RNSiteEditViewController*)controller
 {
     [self dismissViewControllerAnimated:YES completion:nil];
 }
 
 #pragma mark - RNEditprojectViewControllerDelegate implementation
 
-- (void) editProjectViewControllerDidCancel:(RNProjectInfoViewController*)controller
+- (void) editProjectViewControllerDidCancel:(RNSiteEditViewController*)controller
 {
     [self dismissViewControllerAnimated:YES completion:nil];
 }
@@ -95,9 +95,9 @@
 - (UICollectionViewCell*)collectionView:(UICollectionView*)collectionView cellForItemAtIndexPath:(NSIndexPath*)indexPath
 {
     RNCollectionViewProjectCell* cell = (RNCollectionViewProjectCell*)[collectionView dequeueReusableCellWithReuseIdentifier:@"ProjectCell" forIndexPath:indexPath];
-    RNProject* project = [self.fetchedResultsController objectAtIndexPath:indexPath];
+    RNSite* site = [self.fetchedResultsController objectAtIndexPath:indexPath];
     [cell.deleteButton addTarget:self action:@selector(delete:) forControlEvents:UIControlEventTouchUpInside];
-    cell.projectName = project.siteName;
+    cell.projectName = site.siteName;
     
     return cell;
 }
@@ -105,8 +105,8 @@
 - (void) delete:(UIButton*)sender
 {
     NSIndexPath* indexPath = [self.collectionView indexPathForCell:(RNCollectionViewProjectCell*)sender.superview.superview];
-    RNProject* project = [self.fetchedResultsController objectAtIndexPath:indexPath];
-    [[RNStore instance] deleteProject:project];
+    RNSite* site = [self.fetchedResultsController objectAtIndexPath:indexPath];
+    [[RNStore instance] deleteSite:site];
 }
 
 
@@ -114,9 +114,8 @@
 
 - (void) collectionView:(UICollectionView *)collectionView didSelectItemAtIndexPath:(NSIndexPath *)indexPath
 {
-    RNProject* project = [self.fetchedResultsController objectAtIndexPath:indexPath];
-    [self performSegueWithIdentifier:@"EditProject" sender:project];
-
+    RNSite* site = [self.fetchedResultsController objectAtIndexPath:indexPath];
+    [self performSegueWithIdentifier:@"EditProject" sender:site];
 }
 
 

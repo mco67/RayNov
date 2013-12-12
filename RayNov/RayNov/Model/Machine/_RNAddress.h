@@ -68,13 +68,9 @@ extern const struct RNAddressFetchedProperties {
 
 
 
-@property (nonatomic, strong) NSNumber* postalCode;
+@property (nonatomic, strong) NSString* postalCode;
 
 
-
-@property int16_t postalCodeValue;
-- (int16_t)postalCodeValue;
-- (void)setPostalCodeValue:(int16_t)value_;
 
 //- (BOOL)validatePostalCode:(id*)value_ error:(NSError**)error_;
 
@@ -120,11 +116,8 @@ extern const struct RNAddressFetchedProperties {
 
 
 
-- (NSNumber*)primitivePostalCode;
-- (void)setPrimitivePostalCode:(NSNumber*)value;
-
-- (int16_t)primitivePostalCodeValue;
-- (void)setPrimitivePostalCodeValue:(int16_t)value_;
+- (NSString*)primitivePostalCode;
+- (void)setPrimitivePostalCode:(NSString*)value;
 
 
 

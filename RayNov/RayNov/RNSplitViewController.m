@@ -21,7 +21,9 @@
         @try { [self performSegueWithIdentifier:RNSegueLeftIdentifier sender:nil]; }
         @catch (NSException *exception) {}
         @try { [self performSegueWithIdentifier:RNSegueRightIdentifier sender:nil]; }
-        @catch (NSException* exception) {}
+        @catch (NSException* exception) {
+            NSLog(@"%@", exception);
+        }
     }
     
     // Set our contentView to the controllers view
