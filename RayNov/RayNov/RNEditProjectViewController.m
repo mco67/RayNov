@@ -28,7 +28,6 @@
     [self.collectionView registerClass:[RNRoomItem class] forCellWithReuseIdentifier:@"RoomCell"];
     
     // Create and initialize the fetchedResultController
-    NSError *error;
     /*self.fetchedResultsController = [[RNStore instance] createRoomsFetchedResultControllerForProject:self.project andDelegate:self];
 	if (![self.fetchedResultsController performFetch:&error]) {
 		NSLog(@"Unresolved error %@, %@", error, [error userInfo]);

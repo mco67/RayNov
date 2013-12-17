@@ -10,15 +10,13 @@
 #import "RNClientTableViewController.h"
 #import "RNClient.h"
 
-@protocol RNClientEditViewControllerDelegate <NSObject>
 
-- (void) onClientModified:(RNClient*)client;
-
-@end
+typedef void(^RNClientEditButtonBlock)(RNClient* client);
 
 @interface RNClientEditViewController : UITableViewController 
 
-@property (weak, nonatomic) id<RNClientEditViewControllerDelegate> delegate;
+@property (copy, nonatomic) RNClientEditButtonBlock leftButtonBlock;
+@property (copy, nonatomic) RNClientEditButtonBlock rightButtonBlock;
 @property (strong, nonatomic) RNClient* client;
 
 @end

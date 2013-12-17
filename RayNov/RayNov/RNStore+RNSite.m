@@ -12,9 +12,9 @@
 
 @implementation RNStore (RNSite)
 
-- (RNSite*) createSiteWithSiteName:(NSString*)siteName andSiteReference:(NSString*)siteRef andError:(NSError**)error
+- (RNSite*) createSite
 {
-    // Check the sitetName unicity
+    /*// Check the sitetName unicity
     if (![self checkSiteNameUnicity:siteName]) {
         *error = [NSError errorWithDomain:@"RNStore+RNSite" code:ERROR_DUPLICATE_SITE_NAME userInfo:nil];
         return nil;
@@ -24,12 +24,10 @@
     if (![self checkSiteReferenceUnicity:siteRef]) {
         *error = [NSError errorWithDomain:@"RNStore+RNSite" code:ERROR_DUPLICATE_SITE_REFERENCE userInfo:nil];
         return nil;
-    }
+    }*/
     
     // Create and fill the new project object
     RNSite* project = [RNSite insertInManagedObjectContext:self.managedObjectContext];
-    project.siteName = siteName;
-    project.siteReference = siteRef;
     project.creationDate = [NSDate date];
     
     // Create the associated RNAddress object
@@ -77,10 +75,11 @@
     
     // Compute predicate array
     NSMutableArray* predicateArray = [NSMutableArray array];
+    [predicateArray addObject:[NSPredicate predicateWithFormat:@"siteName!=nil AND siteName!=''"]];
+
     if (searchString.length) {
         // your search predicate(s) are added to this array
         [predicateArray addObject:[NSPredicate predicateWithFormat:@"siteName CONTAINS[cd] %@", searchString]];
-        
         if (filterPredicate) {
             filterPredicate = [NSCompoundPredicate andPredicateWithSubpredicates:[NSArray arrayWithObjects:filterPredicate, [NSCompoundPredicate orPredicateWithSubpredicates:predicateArray], nil]];
         }
@@ -88,6 +87,7 @@
             filterPredicate = [NSCompoundPredicate orPredicateWithSubpredicates:predicateArray];
         }
     }
+    //else filterPredicate = [NSCompoundPredicate orPredicateWithSubpredicates:predicateArray];
     [fetchRequest setPredicate:filterPredicate];
     [fetchRequest setFetchBatchSize:20];
     [fetchRequest setSortDescriptors:sortDescriptors];

@@ -13,19 +13,13 @@
 
 @implementation RNStore (RNClient)
 
-- (RNClient*) createClientWithLastName:(NSString*)lastName andFirstName:(NSString*)firstName andError:(NSError**)error
+
+#pragma mark - CRUD implementation
+
+- (RNClient*) createClient
 {
-    
-    // Check the clientName unicity
-    if (![self checkClientNameUnicityWithLastName:lastName andFirstName:firstName]) {
-        *error = [NSError errorWithDomain:@"RNStore+RNClient" code:ERROR_DUPLICATE_CLIENTNAME userInfo:nil];
-        return nil;
-    }
-    
     // Create and fill the new client object
     RNClient* client = [RNClient insertInManagedObjectContext:self.managedObjectContext];
-    client.firstName = firstName;
-    client.lastName = lastName;
     
     // Create the associate address object
     RNAddress* clientAddress = [RNAddress insertInManagedObjectContext:self.managedObjectContext];
@@ -33,6 +27,71 @@
     
     return client;
 }
+
+- (void) deleteClient:(RNClient*)client
+{
+    [self.managedObjectContext deleteObject:client];
+}
+
+- (NSFetchedResultsController*) getSearchFetchedResultsCtrlWithSearch:(NSString*)searchString
+{
+    NSArray* sortDescriptors = @[[[NSSortDescriptor alloc] initWithKey:@"lastName" ascending:YES]];
+    NSPredicate* filterPredicate = nil;
+    
+    // Create the fetchRequest for the entity.
+    NSFetchRequest* fetchRequest = [[NSFetchRequest alloc] init];
+    [fetchRequest setEntity:[RNClient entityInManagedObjectContext:self.managedObjectContext]];
+    
+    // Compute predicate array
+    NSMutableArray* predicateArray = [NSMutableArray array];
+    if (searchString.length) {
+        // your search predicate(s) are added to this array
+        [predicateArray addObject:[NSPredicate predicateWithFormat:@"firstName CONTAINS[cd] %@", searchString]];
+        [predicateArray addObject:[NSPredicate predicateWithFormat:@"lastName CONTAINS[cd] %@", searchString]];
+        
+        if (filterPredicate) {
+            filterPredicate = [NSCompoundPredicate andPredicateWithSubpredicates:[NSArray arrayWithObjects:filterPredicate, [NSCompoundPredicate orPredicateWithSubpredicates:predicateArray], nil]];
+        }
+        else {
+            filterPredicate = [NSCompoundPredicate orPredicateWithSubpredicates:predicateArray];
+        }
+    }
+    [fetchRequest setPredicate:filterPredicate];
+    [fetchRequest setFetchBatchSize:20];
+    [fetchRequest setSortDescriptors:sortDescriptors];
+    
+    NSFetchedResultsController* fetchedResultsController =[[NSFetchedResultsController alloc] initWithFetchRequest:fetchRequest
+                                                                                              managedObjectContext:self.managedObjectContext
+                                                                                                sectionNameKeyPath:nil
+                                                                                                         cacheName:nil];
+    NSError *error = nil;
+    if (![fetchedResultsController performFetch:&error])
+    {
+        NSLog(@"Unresolved error %@, %@", error, [error userInfo]);
+        abort();
+    }
+    return fetchedResultsController;
+}
+
+
+#pragma mark - Tools methods
+
+- (BOOL) checkClientNameUnicityWithLastName:(NSString*)clientLastName andFirstName:(NSString*)clientFirstName
+{
+    // Create the request
+    NSFetchRequest* request = [[NSFetchRequest alloc] init];
+    [request setEntity:[RNClient entityInManagedObjectContext:self.managedObjectContext]];
+    [request setPredicate:[NSPredicate predicateWithFormat:@"(lastName like %@) AND (firstName like %@)", clientLastName, clientFirstName]];
+    
+    // Execute request
+    NSError* error = nil;
+    NSArray* fetchedProjects = [self.managedObjectContext executeFetchRequest:request error:&error];
+    return !(fetchedProjects && [fetchedProjects count]>0);
+}
+
+
+
+#pragma mark - To remove methods
 
 - (NSFetchedResultsController*) getClientFetchedResultsCtrlWithDelegate:(id<NSFetchedResultsControllerDelegate>)delegate
 {
@@ -52,67 +111,12 @@
 }
 
 
-- (NSFetchedResultsController*) getSearchFetchedResultsCtrlWithSearch:(NSString*)searchString
-{
-    NSArray* sortDescriptors = @[[[NSSortDescriptor alloc] initWithKey:@"lastName" ascending:YES]];
-    NSPredicate* filterPredicate = nil;
-    
-    // Create the fetchRequest for the entity.
-    NSFetchRequest* fetchRequest = [[NSFetchRequest alloc] init];
-    [fetchRequest setEntity:[RNClient entityInManagedObjectContext:self.managedObjectContext]];
-    
-    // Compute predicate array
-    NSMutableArray* predicateArray = [NSMutableArray array];
-    if (searchString.length) {
-        // your search predicate(s) are added to this array
-        [predicateArray addObject:[NSPredicate predicateWithFormat:@"firstName CONTAINS[cd] %@", searchString]];
-        [predicateArray addObject:[NSPredicate predicateWithFormat:@"lastName CONTAINS[cd] %@", searchString]];
-
-        if (filterPredicate) {
-            filterPredicate = [NSCompoundPredicate andPredicateWithSubpredicates:[NSArray arrayWithObjects:filterPredicate, [NSCompoundPredicate orPredicateWithSubpredicates:predicateArray], nil]];
-        }
-        else {
-            filterPredicate = [NSCompoundPredicate orPredicateWithSubpredicates:predicateArray];
-        }
-    }
-    [fetchRequest setPredicate:filterPredicate];
-    [fetchRequest setFetchBatchSize:20];
-    [fetchRequest setSortDescriptors:sortDescriptors];
-    
-    NSFetchedResultsController* fetchedResultsController =[[NSFetchedResultsController alloc] initWithFetchRequest:fetchRequest
-                                                                                              managedObjectContext:self.managedObjectContext
-                                                                                                sectionNameKeyPath:nil
-                                                                                                         cacheName:nil];    
-    NSError *error = nil;
-    if (![fetchedResultsController performFetch:&error])
-    {
-        NSLog(@"Unresolved error %@, %@", error, [error userInfo]);
-        abort();
-    }
-    return fetchedResultsController;
-}
 
 
-- (void) deleteClient:(RNClient*)client
-{
-    [self.managedObjectContext deleteObject:client];
-}
 
 
-#pragma mark - Private methods
 
-- (BOOL) checkClientNameUnicityWithLastName:(NSString*)clientLastName andFirstName:(NSString*)clientFirstName
-{
-    // Create the request
-    NSFetchRequest* request = [[NSFetchRequest alloc] init];
-    [request setEntity:[RNClient entityInManagedObjectContext:self.managedObjectContext]];
-    [request setPredicate:[NSPredicate predicateWithFormat:@"(lastName like %@) AND (firstName like %@)", clientLastName, clientFirstName]];
-    
-    // Execute request
-    NSError* error = nil;
-    NSArray* fetchedProjects = [self.managedObjectContext executeFetchRequest:request error:&error];
-    return !(fetchedProjects && [fetchedProjects count]>0);
-}
+
 
 
 @end

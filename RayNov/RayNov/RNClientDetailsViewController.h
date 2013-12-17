@@ -10,7 +10,7 @@
 #import "RNClient.h"
 #import "RNClientTableViewController.h"
 
-@interface RNClientDetailsViewController : UITableViewController <RNTableViewControllerDelegate>
+@interface RNClientDetailsViewController : UITableViewController
 
 @property (strong, nonatomic) RNClient* client;
 

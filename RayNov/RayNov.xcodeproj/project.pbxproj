@@ -81,6 +81,7 @@
 		74AB23B31858BCF900977C0F /* RNSiteDetailsViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 74AB23B21858BCF900977C0F /* RNSiteDetailsViewController.m */; };
 		74AB23BC1859E94E00977C0F /* RNSite.m in Sources */ = {isa = PBXBuildFile; fileRef = 74AB23BB1859E94E00977C0F /* RNSite.m */; };
 		74AB23BF1859E95C00977C0F /* _RNSite.m in Sources */ = {isa = PBXBuildFile; fileRef = 74AB23BE1859E95C00977C0F /* _RNSite.m */; };
+		74C45651185E3B2200B6E8F5 /* RNSiteClientTableViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 74C45650185E3B2200B6E8F5 /* RNSiteClientTableViewController.m */; };
 		74C773851846880B00074061 /* RNCollectionViewProjectCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 74C773841846880B00074061 /* RNCollectionViewProjectCell.m */; };
 		74D3E1991847D4720055BEEA /* reveal-icon.png in Resources */ = {isa = PBXBuildFile; fileRef = 74D3E1971847D4720055BEEA /* reveal-icon.png */; };
 		74D3E19A1847D4720055BEEA /* reveal-icon@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 74D3E1981847D4720055BEEA /* reveal-icon@2x.png */; };
@@ -221,6 +222,8 @@
 		74AB23BB1859E94E00977C0F /* RNSite.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = RNSite.m; sourceTree = "<group>"; };
 		74AB23BD1859E95C00977C0F /* _RNSite.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = _RNSite.h; sourceTree = "<group>"; };
 		74AB23BE1859E95C00977C0F /* _RNSite.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = _RNSite.m; sourceTree = "<group>"; };
+		74C4564F185E3B2200B6E8F5 /* RNSiteClientTableViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = RNSiteClientTableViewController.h; sourceTree = "<group>"; };
+		74C45650185E3B2200B6E8F5 /* RNSiteClientTableViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = RNSiteClientTableViewController.m; sourceTree = "<group>"; };
 		74C773831846880B00074061 /* RNCollectionViewProjectCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = RNCollectionViewProjectCell.h; sourceTree = "<group>"; };
 		74C773841846880B00074061 /* RNCollectionViewProjectCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = RNCollectionViewProjectCell.m; sourceTree = "<group>"; };
 		74D3E1971847D4720055BEEA /* reveal-icon.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "reveal-icon.png"; path = "Resources/reveal-icon.png"; sourceTree = "<group>"; };
@@ -515,6 +518,8 @@
 				74AB23B21858BCF900977C0F /* RNSiteDetailsViewController.m */,
 				741F01DD18433B6900FF9FE8 /* RNSiteEditViewController.h */,
 				741F01DE18433B6900FF9FE8 /* RNSiteEditViewController.m */,
+				74C4564F185E3B2200B6E8F5 /* RNSiteClientTableViewController.h */,
+				74C45650185E3B2200B6E8F5 /* RNSiteClientTableViewController.m */,
 			);
 			name = Site;
 			sourceTree = "<group>";
@@ -755,6 +760,7 @@
 				74C773851846880B00074061 /* RNCollectionViewProjectCell.m in Sources */,
 				741360C41849364900B7207A /* RNRoomsLayout.m in Sources */,
 				7447A3B9185194F200417705 /* RNSplitContentView.m in Sources */,
+				74C45651185E3B2200B6E8F5 /* RNSiteClientTableViewController.m in Sources */,
 				74D5AD8618469862004AADBF /* RNEditProjectViewController.m in Sources */,
 				741F01D2184290B400FF9FE8 /* _RNRadiator.m in Sources */,
 				741F01C9184290B400FF9FE8 /* RNRadiator.m in Sources */,

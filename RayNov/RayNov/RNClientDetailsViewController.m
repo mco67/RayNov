@@ -14,7 +14,7 @@
 #import "RNAddress.h"
 
 
-@interface RNClientDetailsViewController () <RNClientEditViewControllerDelegate>
+@interface RNClientDetailsViewController ()
 
 @property (weak, nonatomic) IBOutlet UITextField* clientLastName;
 @property (weak, nonatomic) IBOutlet UITextField* clientFirstName;
@@ -36,19 +36,16 @@
 
 - (void) viewDidLoad
 {
-    [self updateFromClient:self.client];
     [super viewDidLoad];
+    [self updateFields];
 }
 
-- (void) updateFromClient:(RNClient*)client
+- (void) updateFields
 {
-    if (client) {
-    
-        // Update self client
-        self.client = client;
+    if (self.client) {
         
         // Update title
-        self.navigationItem.title = @"";[NSString stringWithFormat:@"Client %@", self.client.displayName];
+        self.navigationItem.title = [NSString stringWithFormat:@"Client %@", self.client.displayName];
         
         // Update fields
         self.clientLastName.text = self.client.lastName;
@@ -67,15 +64,16 @@
         self.clientNameErrorLabel.hidden = YES;
     }
     
-    self.tableView.hidden = (client == nil);
+    self.tableView.hidden = (self.client == nil);
 }
 
 
 #pragma mark - RNClientTableViewControllerDelegate implementation
 
-- (void) onCellSelected:(id)object
+- (void) setClient:(RNClient*)client
 {
-    [self updateFromClient:(RNClient*)object];
+    _client = client;
+    [self updateFields];
 }
 
 
@@ -86,8 +84,8 @@
         UIFont* font = [UIFont fontWithName:@"HelveticaNeue-Thin" size:18];
         NSString* editLabel =@"Edit";
         CGRect rect = [editLabel boundingRectWithSize:CGSizeMake(300, 300)
-                                           options:NSStringDrawingUsesLineFragmentOrigin
-                                        attributes:@{NSFontAttributeName : font }
+                                              options:NSStringDrawingUsesLineFragmentOrigin
+                                           attributes:@{NSFontAttributeName : font }
                                               context:nil];
         CGFloat buttonWidth = rect.size.width+32;
         UIButton* button = [UIButton buttonWithType:UIButtonTypeRoundedRect];
@@ -104,7 +102,7 @@
 
 - (void) openModificationView
 {
-    [self performSegueWithIdentifier: @"clientModif" sender: self.client];
+    [self performSegueWithIdentifier: @"editClient" sender: self.client];
 }
 
 
@@ -112,20 +110,28 @@
 
 - (void) prepareForSegue:(UIStoryboardSegue*)segue sender:(id)sender
 {
-    if ([segue.identifier isEqualToString:@"clientModif"]) {
+    if ([segue.identifier isEqualToString:@"editClient"]) {
         UINavigationController* navigationController = segue.destinationViewController;
         RNClientEditViewController* clientEditViewController = (RNClientEditViewController*)[navigationController viewControllers][0];
         clientEditViewController.client = (RNClient*)sender;
-        clientEditViewController.delegate = self;
+        
+        // Configure action on leftButton (Back)
+        clientEditViewController.leftButtonBlock = ^(RNClient* client)
+        {
+            [self.navigationController popViewControllerAnimated:YES];
+        };
+        
+        // Configure action on leftButton (Done)
+        clientEditViewController.rightButtonBlock = ^(RNClient* client)
+        {
+            self.client = client;
+            [self updateFields];
+            [self.navigationController popViewControllerAnimated:YES];
+        };
+
+        
     }
 }
 
-
-#pragma mark - RNClientEditViewControllerDelegate implementation
-
-- (void) onClientModified:(RNClient*)client;
-{
-    [self updateFromClient:client];
-}
 
 @end

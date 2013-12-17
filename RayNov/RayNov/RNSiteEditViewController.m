@@ -11,9 +11,11 @@
 #import "RNSite.h"
 #import "RNClient.h"
 #import "RNAddress.h"
+#import "RNSiteClientTableViewController.h"
+#import "RNClientEditViewController.h"
+#import "RNStore+RNClient.h"
 
-
-@interface RNSiteEditViewController () <UITextFieldDelegate>
+@interface RNSiteEditViewController ()
 
 @property (weak, nonatomic) IBOutlet UITextField* siteName;
 @property (weak, nonatomic) IBOutlet UILabel* siteNameErrorLabel;
@@ -24,9 +26,9 @@
 @property (weak, nonatomic) IBOutlet UITextField* siteTown;
 @property (weak, nonatomic) IBOutlet UITextField* sitePostalCode;
 @property (weak, nonatomic) IBOutlet UITextField* siteCountry;
-@property (weak, nonatomic) IBOutlet UIBarButtonItem* applyButton;
-@property (nonatomic) BOOL updateMode;
-
+@property (weak, nonatomic) IBOutlet UILabel* siteClient;
+@property (weak, nonatomic) IBOutlet UIBarButtonItem* rightButton;
+@property (weak, nonatomic) UIPopoverController* attachClientPopoverController;
 @end
 
 
@@ -36,72 +38,59 @@
 
 - (void) viewDidLoad
 {
-    self.siteNameErrorLabel.hidden = YES;
-    self.siteReferenceErrorLabel.hidden = YES;
-    self.applyButton.enabled = [self isFormValid];
+    [super viewDidLoad];
+    
+    // Set event handlers
     [self.siteName addTarget:self action:@selector(siteNameDidChange:) forControlEvents:UIControlEventEditingChanged];
     [self.siteReference addTarget:self action:@selector(siteRefDidChange:) forControlEvents:UIControlEventEditingChanged];
     
-    // Update information
-    [self updateFromSite:self.site];
-    
-    [super viewDidLoad];
+    // Update form fields
+    [self updateFields];
 }
 
-- (void) updateFromSite:(RNSite*)site
+- (void) updateFields
 {
-    // Check if we are in update mode
-    self.updateMode = (site != nil);
-    
-    if (self.updateMode) {
-        
+    // Specific settings in modification mode
+    if (!IsNullOrEmpty(self.site.siteName) && !IsNullOrEmpty(self.site.siteReference))
+    {
         // Update title
         self.navigationItem.title = [NSString stringWithFormat:@"Site %@", self.site.siteName];
         
-        // Handle project info
-        self.siteName.text = self.site.siteName;
-        self.siteReference.text = self.site.siteReference;
-        self.siteAddress1.text = self.site.address.postalAddress1;
-        self.siteAddress2.text = self.site.address.postalAddress2;
-        self.siteTown.text = self.site.address.town;
-        self.sitePostalCode.text = self.site.address.postalCode;
-        self.siteCountry.text = self.site.address.country;
-        
-        // Update error label and buttons
-        self.siteNameErrorLabel.hidden = YES;
-        self.applyButton.enabled = [self isFormValid];
-        
-        // Lock siteName and siteReference field
+        // Lock lastName and firstname field
         self.siteName.userInteractionEnabled = FALSE;
         self.siteReference.userInteractionEnabled = FALSE;
     }
-}
-
-
-#pragma mark - Handle user actions
-
-- (IBAction) cancel:(id)sender
-{
-    // Hide the modal view
-    [self dismissViewControllerAnimated:YES completion:nil];
-}
-
-- (IBAction) done:(id)sender
-{
-    // Fetch key information
-    NSString* siteName = self.siteName.text;
-    NSString* siteReference = self.siteReference.text;
     
-    if (!self.updateMode) {
-        // Create and configure the project entity
-        NSError* error = nil;
-        RNSite* site = [[RNStore instance] createSiteWithSiteName:siteName andSiteReference:siteReference andError:&error];
-        if (!site || error) {
-            if (error.code == ERROR_DUPLICATE_SITE_NAME) self.siteNameErrorLabel.hidden = NO;
-            if (error.code == ERROR_DUPLICATE_SITE_REFERENCE) self.siteReferenceErrorLabel.hidden = NO;
-            return;
-        }
-    }
+    // Update fields
+    self.siteName.text = self.site.siteName;
+    self.siteReference.text = self.site.siteReference;
+    self.siteAddress1.text = self.site.address.postalAddress1;
+    self.siteAddress2.text = self.site.address.postalAddress2;
+    self.siteTown.text = self.site.address.town;
+    self.sitePostalCode.text = self.site.address.postalCode;
+    self.siteCountry.text = self.site.address.country;
+    self.siteClient.text = self.site.client.displayName;
+    
+    // Update error label and buttons
+    self.siteNameErrorLabel.hidden = YES;
+    self.siteReferenceErrorLabel.hidden = YES;
+    self.rightButton.enabled = [self isFormValid];
+}
+
+
+#pragma mark - Buttons action handling
+
+- (IBAction) onLeftButtonTap:(id)sender
+{
+    // Execute left button block
+    self.leftButtonBlock(self.site);
+}
+
+- (IBAction) onRightButtonTap:(id)sender
+{
+    // Fill site identifiers
+    self.site.siteName = self.siteName.text;
+    self.site.siteReference = self.siteReference.text;
     
     // Fill address fields
     RNAddress* address = self.site.address;
@@ -111,33 +100,84 @@
     address.postalCode = self.sitePostalCode.text;
     address.country = self.siteCountry.text;
     
-    // Store the project entity
-    [[RNStore instance] saveContext];
-    
-    // Send event for site modification in update mode
-    if (self.updateMode) {
-        [self.delegate onSiteModified:self.site];
-    }
-    
-    // Hide the modal view
-    [self dismissViewControllerAnimated:YES completion:nil];
+    // Execute left button block
+    self.rightButtonBlock(self.site);
 }
+
+
+#pragma mark - Private methods
 
 - (void) siteNameDidChange:(UITextField*)textField
 {
-    self.siteNameErrorLabel.hidden = YES;
-    self.applyButton.enabled = [self isFormValid];
+    NSString* siteName = self.siteName.text;
+    self.siteNameErrorLabel.hidden = [[RNStore instance] checkSiteNameUnicity:siteName];
+    self.rightButton.enabled = [self isFormValid];
 }
 
 - (void) siteRefDidChange:(UITextField*)textField
 {
-    self.siteReferenceErrorLabel.hidden = YES;
-    self.applyButton.enabled = [self isFormValid];
+    NSString* siteRef = self.siteReference.text;
+    self.siteReferenceErrorLabel.hidden = [[RNStore instance] checkSiteReferenceUnicity:siteRef];
+    self.rightButton.enabled = [self isFormValid];
 }
 
 - (BOOL) isFormValid
 {
-    return !IsNullOrEmpty(self.siteName.text) && !IsNullOrEmpty(self.siteReference.text);
+    return !IsNullOrEmpty(self.siteName.text) && !IsNullOrEmpty(self.siteReference.text) && !IsNullOrEmpty(self.site.client);
+}
+
+
+
+#pragma mark - segue management
+
+- (void) prepareForSegue:(UIStoryboardSegue*)segue sender:(id)sender
+{
+    if ([segue.identifier isEqualToString:@"siteAttachClient"]) {
+        
+        // Store popover controller
+        self.attachClientPopoverController = ((UIStoryboardPopoverSegue*)segue).popoverController;
+        
+        UINavigationController* navigationController = (UINavigationController*)segue.destinationViewController;
+        RNSiteClientTableViewController* siteClientTableViewController = (RNSiteClientTableViewController*)navigationController.viewControllers[0];
+        
+        // Configure the cell selected block
+        siteClientTableViewController.cellSelectedBlock = ^(RNClient* client)
+        {
+            self.site.client = client;
+            self.siteClient.textColor = [UIColor blackColor];
+            self.siteClient.text = client.displayName;
+            self.rightButton.enabled = [self isFormValid];
+            [self.attachClientPopoverController dismissPopoverAnimated:YES];
+        };
+    }
+    else if ([segue.identifier isEqualToString:@"siteCreateModifyClient"]) {
+        
+        // Fetch or create the client
+        RNClient* client = self.site.client?self.site.client:[[RNStore instance] createClient];;
+        
+        // Configure RNClientEditViewController
+        RNClientEditViewController* clientEditViewController = (RNClientEditViewController*)segue.destinationViewController;
+        clientEditViewController.client = client;
+        
+        // Configure action on leftButton (Back)
+        clientEditViewController.leftButtonBlock = ^(RNClient* client)
+        {
+            [[RNStore instance] deleteClient:client];
+            self.site.client = nil;
+            self.rightButton.enabled = [self isFormValid];
+            [self.navigationController popViewControllerAnimated:YES];
+        };
+        
+        // Configure action on leftButton (Done)
+        clientEditViewController.rightButtonBlock = ^(RNClient* client)
+        {
+            self.site.client = client;
+            self.siteClient.textColor = [UIColor blackColor];
+            self.siteClient.text = client.displayName;
+            self.rightButton.enabled = [self isFormValid];
+            [self.navigationController popViewControllerAnimated:YES];
+        };
+    }
 }
 
 @end

@@ -54,8 +54,9 @@
         NSIndexPath* indexPath = [NSIndexPath indexPathForRow:0 inSection:0];
         [self.tableView selectRowAtIndexPath:indexPath animated:YES scrollPosition:UITableViewScrollPositionBottom];
         self.selectedObject = [[self fetchedResultsControllerForTableView:self.tableView] objectAtIndexPath:indexPath];
-        [self.delegate onCellSelected:self.selectedObject];
+        self.cellSelectedBlock(self.selectedObject);
     }
+    [super viewDidAppear:animated];
 }
 
 - (void) viewDidDisappear:(BOOL)animated
@@ -162,7 +163,7 @@
 - (void) tableView:(UITableView*)tableView didSelectRowAtIndexPath:(NSIndexPath*)indexPath
 {
     self.selectedObject = [[self fetchedResultsControllerForTableView:tableView] objectAtIndexPath:indexPath];
-    [self.delegate onCellSelected:self.selectedObject];
+    self.cellSelectedBlock(self.selectedObject);
 }
 
 
@@ -173,6 +174,7 @@
     self.searchFetchedResultsController.delegate = nil;
     self.searchFetchedResultsController = nil;
 }
+
 
 #pragma mark - Search Bar
 
@@ -189,15 +191,12 @@
     return YES;
 }
 
-
 - (BOOL) searchDisplayController:(UISearchDisplayController*)controller shouldReloadTableForSearchScope:(NSInteger)searchOption
 {
     [self filterContentForSearchText:[self.searchDisplayController.searchBar text]
                                scope:[NSString stringWithFormat:@"%d", [self.searchDisplayController.searchBar selectedScopeButtonIndex]]];
     return YES;
 }
-
-
 
 - (void) controllerWillChangeContent:(NSFetchedResultsController*)controller
 {

@@ -9,19 +9,15 @@
 #import <UIKit/UIKit.h>
 
 
-@protocol RNTableViewControllerDelegate <NSObject>
-
-- (void) onCellSelected:(id)object;
-
-@end
-
+typedef void(^RNTableViewControllerCellSelectedBlock)(id object);
 
 @interface RNTableViewController : UITableViewController
 
-@property (strong, nonatomic) id<RNTableViewControllerDelegate> delegate;
+@property (copy, nonatomic) RNTableViewControllerCellSelectedBlock cellSelectedBlock;
 @property (weak, nonatomic) IBOutlet UISearchBar* searchBar;
 @property (strong, nonatomic) NSFetchedResultsController* fetchedResultsController;
 @property (strong, nonatomic) NSFetchedResultsController* searchFetchedResultsController;
+
 
 - (NSFetchedResultsController*) fetchedResultsControllerForTableView:(UITableView*)tableView;
 

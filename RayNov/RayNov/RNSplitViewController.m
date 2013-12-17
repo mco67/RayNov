@@ -9,9 +9,11 @@
 #import "RNSplitViewController.h"
 #import "RNSplitContentView.h"
 
+static NSString* const RNSegueLeftIdentifier = @"rn_left";
+static NSString* const RNSegueRightIdentifier = @"rn_right";
+
+
 #pragma mark - RNSplitViewController Class
-
-
 @implementation RNSplitViewController
 
 - (void) loadView
@@ -19,7 +21,9 @@
     // Call each segue separately to load nested viewControllers
     if (self.storyboard && self.leftViewController == nil) {
         @try { [self performSegueWithIdentifier:RNSegueLeftIdentifier sender:nil]; }
-        @catch (NSException *exception) {}
+        @catch (NSException *exception) {
+            NSLog(@"%@", exception);
+        }
         @try { [self performSegueWithIdentifier:RNSegueRightIdentifier sender:nil]; }
         @catch (NSException* exception) {
             NSLog(@"%@", exception);
@@ -32,9 +36,6 @@
 }
 
 #pragma mark storyboard support
-
-static NSString* const RNSegueLeftIdentifier = @"rn_left";
-static NSString* const RNSegueRightIdentifier = @"rn_right";
 
 - (void) prepareForSegue:(RNSplitViewControllerSegue*)segue sender:(id)sender
 {

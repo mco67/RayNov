@@ -13,10 +13,11 @@
 
 @interface RNStore (RNClient)
 
-- (RNClient*) createClientWithLastName:(NSString*)lastName andFirstName:(NSString*)firstName andError:(NSError**)error;
+- (RNClient*) createClient;
+- (void) deleteClient:(RNClient*)client;
+
+- (BOOL) checkClientNameUnicityWithLastName:(NSString*)clientLastName andFirstName:(NSString*)clientFirstName;
 
 - (NSFetchedResultsController*) getSearchFetchedResultsCtrlWithSearch:(NSString*)searchString;
-
-- (void) deleteClient:(RNClient*)client;
 
 @end

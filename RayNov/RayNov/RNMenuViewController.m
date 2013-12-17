@@ -21,13 +21,9 @@
         
         
         revealViewControllerSegue.performBlock = ^(SWRevealViewControllerSegue* rvc_segue, UIViewController* svc, UIViewController* dvc) {
-            //UINavigationController* nc = [[UINavigationController alloc] initWithRootViewController:dvc];
             [revealViewController setFrontViewController:dvc animated:YES];
         };
     }
-
-    // Restore the frontViewController in full screen
-    //[self.revealViewController setFrontViewController:self.revealViewController.frontViewController animated:YES];
 }
 
 @end

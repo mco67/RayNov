@@ -28,7 +28,11 @@
     // Handle left and right child viewControllers
     RNClientTableViewController* menuController = (RNClientTableViewController*)self.leftViewController;
     RNClientDetailsViewController* detailsController = (RNClientDetailsViewController*)self.rightViewController;
-    menuController.delegate = detailsController;
+    
+    menuController.cellSelectedBlock = ^(RNClient* client)
+    {
+        detailsController.client = client;
+    };
     
     // Handle Button behavior
     [self.menuButtonItem setTarget: self.revealViewController];

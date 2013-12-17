@@ -9,8 +9,9 @@
 #import "RNSiteDetailsViewController.h"
 #import "RNSiteEditViewController.h"
 #import "RNAddress.h"
+#import "RNClient.h"
 
-@interface RNSiteDetailsViewController () <RNSiteEditViewControllerDelegate>
+@interface RNSiteDetailsViewController ()
 
 @property (weak, nonatomic) IBOutlet UITextField* siteName;
 @property (weak, nonatomic) IBOutlet UITextField* siteReference;
@@ -19,26 +20,25 @@
 @property (weak, nonatomic) IBOutlet UITextField* siteTown;
 @property (weak, nonatomic) IBOutlet UITextField* sitePostalCode;
 @property (weak, nonatomic) IBOutlet UITextField* siteCountry;
+@property (weak, nonatomic) IBOutlet UITextField* siteClient;
 
 @end
+
 
 @implementation RNSiteDetailsViewController
 
 - (void) viewDidLoad
 {
-    [self updateFromSite:self.site];
     [super viewDidLoad];
+    [self updateFields];
 }
 
-- (void) updateFromSite:(RNSite*)site
+- (void) updateFields
 {
-    if (site) {
-        
-        // Update self client
-        self.site = site;
-        
+    if (self.site) {
+    
         // Update title
-        self.navigationItem.title = @"";[NSString stringWithFormat:@"Site %@", self.site.siteName];
+        self.navigationItem.title = [NSString stringWithFormat:@"Site %@", self.site.siteName];
         
         // Update fields
         self.siteName.text = self.site.siteName;
@@ -48,17 +48,19 @@
         self.siteTown.text = self.site.address.town;
         self.sitePostalCode.text = self.site.address.postalCode;
         self.siteCountry.text = self.site.address.country;
+        self.siteClient.text = self.site.client.displayName;
     }
     
-    self.tableView.hidden = (site == nil);
+    self.tableView.hidden = (self.site == nil);
 }
 
 
 #pragma mark - RNSiteTableViewControllerDelegate implementation
 
-- (void) onCellSelected:(id)object
+- (void) setSite:(RNSite *)site
 {
-    [self updateFromSite:(RNSite*)object];
+    _site = site;
+    [self updateFields];
 }
 
 
@@ -87,7 +89,7 @@
 
 - (void) openModificationView
 {
-    [self performSegueWithIdentifier:@"siteModif" sender:self.site];
+    [self performSegueWithIdentifier:@"editSite" sender:self.site];
 }
 
 
@@ -95,21 +97,25 @@
 
 - (void) prepareForSegue:(UIStoryboardSegue*)segue sender:(id)sender
 {
-    if ([segue.identifier isEqualToString:@"siteModif"]) {
-        UINavigationController* navigationController = segue.destinationViewController;
-        RNSiteEditViewController* siteEditViewController = (RNSiteEditViewController*)[navigationController viewControllers][0];
+    if ([segue.identifier isEqualToString:@"editSite"]) {
+        UINavigationController* navigationController = (UINavigationController*)segue.destinationViewController;
+        RNSiteEditViewController* siteEditViewController = (RNSiteEditViewController*)navigationController.viewControllers[0];
         siteEditViewController.site = (RNSite*)sender;
-        siteEditViewController.delegate = self;
+        
+        // Configure action on leftButton (Cancel)
+        siteEditViewController.leftButtonBlock = ^(RNSite* site) {
+            [self dismissViewControllerAnimated:YES completion:nil];
+        };
+        
+        // Configure action on rightButton (Done)
+        siteEditViewController.rightButtonBlock = ^(RNSite* site) {
+            [[RNStore instance] saveContext];
+            self.site = site;
+            [self updateFields];
+            [self dismissViewControllerAnimated:YES completion:nil];
+        };
+
     }
 }
-
-
-#pragma mark - RNClientEditViewControllerDelegate implementation
-
-- (void) onSiteModified:(RNSite*)site;
-{
-    [self updateFromSite:site];
-}
-
 
 @end

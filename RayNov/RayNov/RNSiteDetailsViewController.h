@@ -9,7 +9,7 @@
 #import <UIKit/UIKit.h>
 #import "RNSiteTableViewController.h"
 
-@interface RNSiteDetailsViewController : UITableViewController <RNTableViewControllerDelegate>
+@interface RNSiteDetailsViewController : UITableViewController
 
 @property (strong, nonatomic) RNSite* site;
 

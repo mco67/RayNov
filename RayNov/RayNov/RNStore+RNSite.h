@@ -14,11 +14,12 @@
 
 @interface RNStore (RNSite)
 
-- (RNSite*) createSiteWithSiteName:(NSString*)siteName
-                        andSiteReference:(NSString*)siteRef
-                                andError:(NSError**)error;
-
+- (RNSite*) createSite;
 - (void) deleteSite:(RNSite*)project;
+
+- (BOOL) checkSiteNameUnicity:(NSString*)siteName;
+- (BOOL) checkSiteReferenceUnicity:(NSString*)siteReference;
+
 
 - (NSFetchedResultsController*) createFetchedResultControllerWithDelegate:(id<NSFetchedResultsControllerDelegate>)delegate;
 - (NSFetchedResultsController*) getSiteFetchedResultsCtrlWithSearch:(NSString*)searchString;

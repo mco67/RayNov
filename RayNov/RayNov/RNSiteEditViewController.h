@@ -8,19 +8,12 @@
 
 #import <UIKit/UIKit.h>
 
-
-@class RNSiteEditViewController;
-
-
-@protocol RNSiteEditViewControllerDelegate <NSObject>
-
-- (void) onSiteModified:(RNSite*)site;
-
-@end
+typedef void(^RNSiteEditButtonBlock)(RNSite* site);
 
 @interface RNSiteEditViewController : UITableViewController
 
-@property (weak, nonatomic) id<RNSiteEditViewControllerDelegate> delegate;
+@property (copy, nonatomic) RNSiteEditButtonBlock leftButtonBlock;
+@property (copy, nonatomic) RNSiteEditButtonBlock rightButtonBlock;
 @property (strong, nonatomic) RNSite* site;
 
 @end
