@@ -10,6 +10,7 @@
 #import "RNSiteEditViewController.h"
 #import "RNAddress.h"
 #import "RNClient.h"
+#import "RNMainRotateViewController.h"
 
 @interface RNSiteDetailsViewController ()
 
@@ -89,7 +90,8 @@
 
 - (void) openModificationView
 {
-    [self performSegueWithIdentifier:@"editSite" sender:self.site];
+    //[self performSegueWithIdentifier:@"editSite" sender:self.site];
+    [[NSNotificationCenter defaultCenter] postNotificationName:RN_ON_ROTATE_NOTIFICATION object:self.site userInfo:nil];
 }
 
 

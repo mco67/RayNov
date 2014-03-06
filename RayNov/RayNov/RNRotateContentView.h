@@ -10,4 +10,7 @@
 
 @interface RNRotateContentView : UIView
 
+- (id) initWithFrontView:(UIView*)frontView andRearView:(UIView*)rearView;
+- (void) rotateViews;
+
 @end

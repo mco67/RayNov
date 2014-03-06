@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8" standalone="yes"?>
-<model userDefinedModelVersionIdentifier="" type="com.apple.IDECoreDataModeler.DataModel" documentVersion="1.0" lastSavedToolsVersion="3401" systemVersion="13A603" minimumToolsVersion="Xcode 4.3" macOSVersion="Automatic" iOSVersion="Automatic">
+<model userDefinedModelVersionIdentifier="" type="com.apple.IDECoreDataModeler.DataModel" documentVersion="1.0" lastSavedToolsVersion="3401" systemVersion="13B42" minimumToolsVersion="Xcode 4.3" macOSVersion="Automatic" iOSVersion="Automatic">
     <entity name="RNAddress" representedClassName="RNAddress" syncable="YES">
         <attribute name="country" optional="YES" attributeType="String" syncable="YES"/>
         <attribute name="postalAddress1" optional="YES" attributeType="String" syncable="YES"/>
@@ -44,8 +44,7 @@
         <relationship name="rooms" optional="YES" toMany="YES" deletionRule="Nullify" destinationEntity="RNRoom" inverseName="project" inverseEntity="RNRoom" syncable="YES"/>
     </entity>
     <entity name="RNSurface" representedClassName="RNSurface" syncable="YES">
-        <attribute name="height" optional="YES" attributeType="Double" defaultValueString="0.0" syncable="YES"/>
-        <attribute name="width" optional="YES" attributeType="Double" minValueString="0" defaultValueString="0.0" syncable="YES"/>
+        <attribute name="surface" optional="YES" attributeType="Double" defaultValueString="0.0" syncable="YES"/>
     </entity>
     <entity name="RNWall" representedClassName="RNWall" parentEntity="RNSurface" syncable="YES">
         <relationship name="doors" optional="YES" toMany="YES" deletionRule="Nullify" destinationEntity="RNDoor" inverseName="wall" inverseEntity="RNDoor" syncable="YES"/>
@@ -62,10 +61,10 @@
         <element name="RNClient" positionX="-4572" positionY="-4896" width="128" height="148"/>
         <element name="RNDoor" positionX="-4356" positionY="-4491" width="128" height="58"/>
         <element name="RNGround" positionX="-4151" positionY="-4666" width="128" height="58"/>
-        <element name="RNSite" positionX="-4367" positionY="-5110" width="128" height="133"/>
         <element name="RNRadiator" positionX="-4554" positionY="-4486" width="128" height="58"/>
         <element name="RNRoom" positionX="-4349" positionY="-4837" width="128" height="118"/>
-        <element name="RNSurface" positionX="-4356" positionY="-4347" width="128" height="73"/>
+        <element name="RNSite" positionX="-4367" positionY="-5110" width="128" height="133"/>
+        <element name="RNSurface" positionX="-4356" positionY="-4347" width="128" height="58"/>
         <element name="RNWall" positionX="-4347" positionY="-4666" width="128" height="103"/>
         <element name="RNWindow" positionX="-4149" positionY="-4486" width="128" height="58"/>
     </elements>

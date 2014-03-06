@@ -5,8 +5,7 @@
 
 
 extern const struct RNSurfaceAttributes {
-	__unsafe_unretained NSString *height;
-	__unsafe_unretained NSString *width;
+	__unsafe_unretained NSString *surface;
 } RNSurfaceAttributes;
 
 extern const struct RNSurfaceRelationships {
@@ -14,7 +13,6 @@ extern const struct RNSurfaceRelationships {
 
 extern const struct RNSurfaceFetchedProperties {
 } RNSurfaceFetchedProperties;
-
 
 
 
@@ -32,29 +30,15 @@ extern const struct RNSurfaceFetchedProperties {
 
 
 
-@property (nonatomic, strong) NSNumber* height;
+@property (nonatomic, strong) NSNumber* surface;
 
 
 
-@property double heightValue;
-- (double)heightValue;
-- (void)setHeightValue:(double)value_;
+@property double surfaceValue;
+- (double)surfaceValue;
+- (void)setSurfaceValue:(double)value_;
 
-//- (BOOL)validateHeight:(id*)value_ error:(NSError**)error_;
-
-
-
-
-
-@property (nonatomic, strong) NSNumber* width;
-
-
-
-@property double widthValue;
-- (double)widthValue;
-- (void)setWidthValue:(double)value_;
-
-//- (BOOL)validateWidth:(id*)value_ error:(NSError**)error_;
+//- (BOOL)validateSurface:(id*)value_ error:(NSError**)error_;
 
 
 
@@ -70,20 +54,11 @@ extern const struct RNSurfaceFetchedProperties {
 @interface _RNSurface (CoreDataGeneratedPrimitiveAccessors)
 
 
-- (NSNumber*)primitiveHeight;
-- (void)setPrimitiveHeight:(NSNumber*)value;
+- (NSNumber*)primitiveSurface;
+- (void)setPrimitiveSurface:(NSNumber*)value;
 
-- (double)primitiveHeightValue;
-- (void)setPrimitiveHeightValue:(double)value_;
-
-
-
-
-- (NSNumber*)primitiveWidth;
-- (void)setPrimitiveWidth:(NSNumber*)value;
-
-- (double)primitiveWidthValue;
-- (void)setPrimitiveWidthValue:(double)value_;
+- (double)primitiveSurfaceValue;
+- (void)setPrimitiveSurfaceValue:(double)value_;
 
 
 

@@ -8,6 +8,23 @@
 
 #import <UIKit/UIKit.h>
 
-@interface RNRotateViewController : RNGenClientEditViewController
+
+#pragma mark - RNRotateViewController
+
+@interface RNRotateViewController : UIViewController
+
+@property (strong, nonatomic) UIViewController* frontViewController;
+@property (strong, nonatomic) UIViewController* rearViewController;
+
+- (void) rotateViews;
+
+@end
+
+
+#pragma mark - RNRotateViewControllerSegue
+
+@interface RNRotateViewControllerSegue : UIStoryboardSegue
+
+@property (strong) void(^performBlock)(RNRotateViewControllerSegue* segue, UIViewController* svc, UIViewController* dvc);
 
 @end

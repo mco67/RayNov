@@ -4,8 +4,7 @@
 #import "_RNSurface.h"
 
 const struct RNSurfaceAttributes RNSurfaceAttributes = {
-	.height = @"height",
-	.width = @"width",
+	.surface = @"surface",
 };
 
 const struct RNSurfaceRelationships RNSurfaceRelationships = {
@@ -40,13 +39,8 @@ const struct RNSurfaceFetchedProperties RNSurfaceFetchedProperties = {
 + (NSSet*)keyPathsForValuesAffectingValueForKey:(NSString*)key {
 	NSSet *keyPaths = [super keyPathsForValuesAffectingValueForKey:key];
 	
-	if ([key isEqualToString:@"heightValue"]) {
-		NSSet *affectingKey = [NSSet setWithObject:@"height"];
-		keyPaths = [keyPaths setByAddingObjectsFromSet:affectingKey];
-		return keyPaths;
-	}
-	if ([key isEqualToString:@"widthValue"]) {
-		NSSet *affectingKey = [NSSet setWithObject:@"width"];
+	if ([key isEqualToString:@"surfaceValue"]) {
+		NSSet *affectingKey = [NSSet setWithObject:@"surface"];
 		keyPaths = [keyPaths setByAddingObjectsFromSet:affectingKey];
 		return keyPaths;
 	}
@@ -57,52 +51,26 @@ const struct RNSurfaceFetchedProperties RNSurfaceFetchedProperties = {
 
 
 
-@dynamic height;
+@dynamic surface;
 
 
 
-- (double)heightValue {
-	NSNumber *result = [self height];
+- (double)surfaceValue {
+	NSNumber *result = [self surface];
 	return [result doubleValue];
 }
 
-- (void)setHeightValue:(double)value_ {
-	[self setHeight:[NSNumber numberWithDouble:value_]];
+- (void)setSurfaceValue:(double)value_ {
+	[self setSurface:[NSNumber numberWithDouble:value_]];
 }
 
-- (double)primitiveHeightValue {
-	NSNumber *result = [self primitiveHeight];
+- (double)primitiveSurfaceValue {
+	NSNumber *result = [self primitiveSurface];
 	return [result doubleValue];
 }
 
-- (void)setPrimitiveHeightValue:(double)value_ {
-	[self setPrimitiveHeight:[NSNumber numberWithDouble:value_]];
-}
-
-
-
-
-
-@dynamic width;
-
-
-
-- (double)widthValue {
-	NSNumber *result = [self width];
-	return [result doubleValue];
-}
-
-- (void)setWidthValue:(double)value_ {
-	[self setWidth:[NSNumber numberWithDouble:value_]];
-}
-
-- (double)primitiveWidthValue {
-	NSNumber *result = [self primitiveWidth];
-	return [result doubleValue];
-}
-
-- (void)setPrimitiveWidthValue:(double)value_ {
-	[self setPrimitiveWidth:[NSNumber numberWithDouble:value_]];
+- (void)setPrimitiveSurfaceValue:(double)value_ {
+	[self setPrimitiveSurface:[NSNumber numberWithDouble:value_]];
 }
 
 

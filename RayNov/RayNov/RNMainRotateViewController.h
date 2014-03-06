@@ -8,6 +8,8 @@
 
 #import "RNRotateViewController.h"
 
+#define RN_ON_ROTATE_NOTIFICATION @"onRotateNotification"
+
 @interface RNMainRotateViewController : RNRotateViewController
 
 @end

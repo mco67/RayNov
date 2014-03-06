@@ -14,25 +14,17 @@
 
 @implementation RNMainRotateViewController
 
-- (id)initWithNibName:(NSString *)nibNameOrNil bundle:(NSBundle *)nibBundleOrNil
+- (id) initWithCoder:(NSCoder *)aDecoder
 {
-    self = [super initWithNibName:nibNameOrNil bundle:nibBundleOrNil];
-    if (self) {
-        // Custom initialization
+    if (self = [super initWithCoder:aDecoder]) {
+        [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(onReceiveRotateNotification:) name:RN_ON_ROTATE_NOTIFICATION object:nil];
     }
     return self;
 }
 
-- (void)viewDidLoad
+- (void) onReceiveRotateNotification:(id)object
 {
-    [super viewDidLoad];
-	// Do any additional setup after loading the view.
-}
-
-- (void)didReceiveMemoryWarning
-{
-    [super didReceiveMemoryWarning];
-    // Dispose of any resources that can be recreated.
+    [self rotateViews];
 }
 
 @end

@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="4514" systemVersion="13A603" targetRuntime="iOS.CocoaTouch.iPad" propertyAccessControl="none" useAutolayout="YES" initialViewController="wcw-wn-7In">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="4514" systemVersion="13B42" targetRuntime="iOS.CocoaTouch.iPad" propertyAccessControl="none" useAutolayout="YES" initialViewController="G7h-m9-ceI">
     <dependencies>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="3747"/>
     </dependencies>
@@ -68,6 +68,68 @@
                 <placeholder placeholderIdentifier="IBFirstResponder" id="juF-HN-cxl" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="-7207" y="-8018"/>
+        </scene>
+        <!--Navigation Controller-->
+        <scene sceneID="LKy-oG-dby">
+            <objects>
+                <navigationController definesPresentationContext="YES" id="00h-wv-toM" sceneMemberID="viewController">
+                    <navigationBar key="navigationBar" contentMode="scaleToFill" id="xSm-7v-BlE">
+                        <autoresizingMask key="autoresizingMask"/>
+                    </navigationBar>
+                    <connections>
+                        <segue destination="gLf-e0-Aew" kind="relationship" relationship="rootViewController" id="FVK-Wd-gfU"/>
+                    </connections>
+                </navigationController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="nTS-Iy-lwP" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="-7768" y="-6350"/>
+        </scene>
+        <!--Test View Controller-->
+        <scene sceneID="Jc9-HA-8bY">
+            <objects>
+                <viewController id="gLf-e0-Aew" customClass="RNTestViewController" sceneMemberID="viewController">
+                    <layoutGuides>
+                        <viewControllerLayoutGuide type="top" id="o2Y-jD-7Ga"/>
+                        <viewControllerLayoutGuide type="bottom" id="AKm-Mr-Fqs"/>
+                    </layoutGuides>
+                    <view key="view" contentMode="scaleToFill" id="szp-fY-6Iu">
+                        <rect key="frame" x="0.0" y="0.0" width="768" height="1024"/>
+                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
+                    </view>
+                    <navigationItem key="navigationItem" id="KUG-oj-n7M">
+                        <barButtonItem key="leftBarButtonItem" title="Back" id="Xyo-3I-RdH">
+                            <connections>
+                                <action selector="onBackAction" destination="gLf-e0-Aew" id="dwL-Nn-2Ic"/>
+                            </connections>
+                        </barButtonItem>
+                    </navigationItem>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="jJh-xM-D3b" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="-6408" y="-6390"/>
+        </scene>
+        <!--Main Rotate View Controller-->
+        <scene sceneID="WRC-kj-e9A">
+            <objects>
+                <viewController id="G7h-m9-ceI" customClass="RNMainRotateViewController" sceneMemberID="viewController">
+                    <layoutGuides>
+                        <viewControllerLayoutGuide type="top" id="s5J-sT-vul"/>
+                        <viewControllerLayoutGuide type="bottom" id="qTv-su-bIn"/>
+                    </layoutGuides>
+                    <view key="view" contentMode="scaleToFill" id="qW3-L6-Ep8">
+                        <rect key="frame" x="0.0" y="0.0" width="768" height="1024"/>
+                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
+                    </view>
+                    <connections>
+                        <segue destination="wcw-wn-7In" kind="custom" identifier="rn_front" customClass="RNRotateViewControllerSegue" id="0gO-FT-hKV"/>
+                        <segue destination="00h-wv-toM" kind="custom" identifier="rn_rear" customClass="RNRotateViewControllerSegue" id="M6l-La-rKb"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="i3Z-NS-0HA" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="-8656" y="-8010"/>
         </scene>
         <!--Menu View Controller-->
         <scene sceneID="IqL-Qc-16U">
@@ -1155,6 +1217,7 @@
                     </tableView>
                     <navigationItem key="navigationItem" title="NewClient" id="8nN-W6-3Mn">
                         <barButtonItem key="backBarButtonItem" title="Cancel" id="5ap-Cd-cei"/>
+                        <barButtonItem key="leftBarButtonItem" systemItem="cancel" id="ZU8-V0-41J"/>
                         <barButtonItem key="rightBarButtonItem" systemItem="done" id="0ng-LT-ZTq">
                             <connections>
                                 <action selector="done:" destination="xd3-SX-LMU" id="hQV-uL-GSg"/>
@@ -1652,8 +1715,8 @@
         <simulatedScreenMetrics key="destination"/>
     </simulatedMetricsContainer>
     <inferredMetricsTieBreakers>
-        <segue reference="eQf-XJ-iRd"/>
         <segue reference="uQd-EC-RYB"/>
+        <segue reference="EsW-iV-LOs"/>
         <segue reference="ri3-v5-Wlk"/>
     </inferredMetricsTieBreakers>
 </document>

@@ -8,6 +8,6 @@
 
 #import <UIKit/UIKit.h>
 
-@interface RNTestViewController : UITableViewController
+@interface RNTestViewController : UIViewController
 
 @end

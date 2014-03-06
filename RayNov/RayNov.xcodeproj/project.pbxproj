@@ -87,6 +87,10 @@
 		74D3E19A1847D4720055BEEA /* reveal-icon@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 74D3E1981847D4720055BEEA /* reveal-icon@2x.png */; };
 		74D3E19D1847DDA50055BEEA /* RNProjectsLayout.m in Sources */ = {isa = PBXBuildFile; fileRef = 74D3E19C1847DDA50055BEEA /* RNProjectsLayout.m */; };
 		74D5AD8618469862004AADBF /* RNEditProjectViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 74D5AD8518469862004AADBF /* RNEditProjectViewController.m */; };
+		74E089211871AC9A001F8B32 /* RNRotateViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 74E089201871AC9A001F8B32 /* RNRotateViewController.m */; };
+		74E089241871AD56001F8B32 /* RNRotateContentView.m in Sources */ = {isa = PBXBuildFile; fileRef = 74E089231871AD56001F8B32 /* RNRotateContentView.m */; };
+		74E089271871B489001F8B32 /* RNMainRotateViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 74E089261871B489001F8B32 /* RNMainRotateViewController.m */; };
+		74E0892B1871B8FD001F8B32 /* RNTestViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 74E0892A1871B8FD001F8B32 /* RNTestViewController.m */; };
 		74E2C580184E029F00AF0668 /* NSString+RNString.m in Sources */ = {isa = PBXBuildFile; fileRef = 74E2C57F184E029F00AF0668 /* NSString+RNString.m */; };
 		74E2C586184E4EAB00AF0668 /* RNClientTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 74E2C585184E4EAB00AF0668 /* RNClientTableViewCell.m */; };
 		74E2C589184E767C00AF0668 /* RNClientsSplitViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 74E2C588184E767C00AF0668 /* RNClientsSplitViewController.m */; };
@@ -232,6 +236,14 @@
 		74D3E19C1847DDA50055BEEA /* RNProjectsLayout.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = RNProjectsLayout.m; sourceTree = "<group>"; };
 		74D5AD8418469862004AADBF /* RNEditProjectViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = RNEditProjectViewController.h; sourceTree = "<group>"; };
 		74D5AD8518469862004AADBF /* RNEditProjectViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = RNEditProjectViewController.m; sourceTree = "<group>"; };
+		74E0891F1871AC9A001F8B32 /* RNRotateViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = RNRotateViewController.h; sourceTree = "<group>"; };
+		74E089201871AC9A001F8B32 /* RNRotateViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = RNRotateViewController.m; sourceTree = "<group>"; };
+		74E089221871AD56001F8B32 /* RNRotateContentView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = RNRotateContentView.h; sourceTree = "<group>"; };
+		74E089231871AD56001F8B32 /* RNRotateContentView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = RNRotateContentView.m; sourceTree = "<group>"; };
+		74E089251871B489001F8B32 /* RNMainRotateViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = RNMainRotateViewController.h; sourceTree = "<group>"; };
+		74E089261871B489001F8B32 /* RNMainRotateViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = RNMainRotateViewController.m; sourceTree = "<group>"; };
+		74E089291871B8FD001F8B32 /* RNTestViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = RNTestViewController.h; sourceTree = "<group>"; };
+		74E0892A1871B8FD001F8B32 /* RNTestViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = RNTestViewController.m; sourceTree = "<group>"; };
 		74E2C57E184E029F00AF0668 /* NSString+RNString.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "NSString+RNString.h"; sourceTree = "<group>"; };
 		74E2C57F184E029F00AF0668 /* NSString+RNString.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "NSString+RNString.m"; sourceTree = "<group>"; };
 		74E2C584184E4EAB00AF0668 /* RNClientTableViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = RNClientTableViewCell.h; sourceTree = "<group>"; };
@@ -269,6 +281,7 @@
 		741360621848CE1800B7207A /* Generic */ = {
 			isa = PBXGroup;
 			children = (
+				74E0891E1871AC79001F8B32 /* RotateViewController */,
 				7414A6BD1853AD5E009ABD62 /* TableViewController */,
 				7447A3B01850CFE100417705 /* SplitViewController */,
 				7447A3AF1850CFC900417705 /* GridViewController */,
@@ -508,6 +521,7 @@
 		74790B6A18576D57004C40E9 /* Site */ = {
 			isa = PBXGroup;
 			children = (
+				74E089281871B8D1001F8B32 /* SiteWork */,
 				74AB23A81858AB7100977C0F /* RNSiteSplitViewController.h */,
 				74AB23A91858AB7100977C0F /* RNSiteSplitViewController.m */,
 				74AB23AB1858ABC200977C0F /* RNSiteTableViewController.h */,
@@ -541,6 +555,8 @@
 		74C77381184682C200074061 /* Main */ = {
 			isa = PBXGroup;
 			children = (
+				74E089251871B489001F8B32 /* RNMainRotateViewController.h */,
+				74E089261871B489001F8B32 /* RNMainRotateViewController.m */,
 				744ABAD0183FDF32009A6366 /* RNProjectsViewController.h */,
 				744ABAD1183FDF32009A6366 /* RNProjectsViewController.m */,
 				74C773831846880B00074061 /* RNCollectionViewProjectCell.h */,
@@ -572,6 +588,26 @@
 				741360C31849364900B7207A /* RNRoomsLayout.m */,
 			);
 			name = EditProject;
+			sourceTree = "<group>";
+		};
+		74E0891E1871AC79001F8B32 /* RotateViewController */ = {
+			isa = PBXGroup;
+			children = (
+				74E0891F1871AC9A001F8B32 /* RNRotateViewController.h */,
+				74E089201871AC9A001F8B32 /* RNRotateViewController.m */,
+				74E089221871AD56001F8B32 /* RNRotateContentView.h */,
+				74E089231871AD56001F8B32 /* RNRotateContentView.m */,
+			);
+			name = RotateViewController;
+			sourceTree = "<group>";
+		};
+		74E089281871B8D1001F8B32 /* SiteWork */ = {
+			isa = PBXGroup;
+			children = (
+				74E089291871B8FD001F8B32 /* RNTestViewController.h */,
+				74E0892A1871B8FD001F8B32 /* RNTestViewController.m */,
+			);
+			name = SiteWork;
 			sourceTree = "<group>";
 		};
 		74E2C57C184E023200AF0668 /* Extensions */ = {
@@ -743,6 +779,7 @@
 				74A8D0BF184A89E90025D701 /* RNStore+RNSite.m in Sources */,
 				741360D41849D10800B7207A /* RNClientTableViewController.m in Sources */,
 				741360BE184924E200B7207A /* RNMenuViewController.m in Sources */,
+				74E089271871B489001F8B32 /* RNMainRotateViewController.m in Sources */,
 				741F01D0184290B400FF9FE8 /* _RNGround.m in Sources */,
 				744ABAC8183FDF32009A6366 /* main.m in Sources */,
 				74E2C586184E4EAB00AF0668 /* RNClientTableViewCell.m in Sources */,
@@ -755,6 +792,8 @@
 				741F01CA184290B400FF9FE8 /* RNRoom.m in Sources */,
 				741F01D4184290B400FF9FE8 /* _RNSurface.m in Sources */,
 				741360CA1849C0E800B7207A /* RNClient.m in Sources */,
+				74E0892B1871B8FD001F8B32 /* RNTestViewController.m in Sources */,
+				74E089241871AD56001F8B32 /* RNRotateContentView.m in Sources */,
 				741360C11849361500B7207A /* RNRoomItem.m in Sources */,
 				74E2C580184E029F00AF0668 /* NSString+RNString.m in Sources */,
 				74C773851846880B00074061 /* RNCollectionViewProjectCell.m in Sources */,
@@ -776,6 +815,7 @@
 				741F01C6184290B400FF9FE8 /* RNDoor.m in Sources */,
 				741F01CE184290B400FF9FE8 /* _RNCeiling.m in Sources */,
 				74AB23BF1859E95C00977C0F /* _RNSite.m in Sources */,
+				74E089211871AC9A001F8B32 /* RNRotateViewController.m in Sources */,
 				74AB23BC1859E94E00977C0F /* RNSite.m in Sources */,
 				741F01DF18433B6900FF9FE8 /* RNSiteEditViewController.m in Sources */,
 				741360651848CE4400B7207A /* RNGridViewController.m in Sources */,
